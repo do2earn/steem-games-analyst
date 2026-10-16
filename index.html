@@ -158,7 +158,9 @@ main{width:min(850px,100%);margin:auto;padding:22px 15px 45px}.brand{display:fle
       const item = document.createElement("span");
       item.className = "game-tag";
       const gameTags = Array.isArray(game.tags) ? game.tags.filter(Boolean) : [];
-      item.textContent = (game.game_name || game.game_id || "Unknown game") + (gameTags.length ? " · " + gameTags.map(tag => "#" + tag).join(", ") : "");
+      const developer = String(game.developer || "").trim().replace(/^@/, "");
+      const developerLabel = /^[a-z0-9.-]{3,16}$/.test(developer) ? " · Developer: @" + developer : " · Developer: —";
+      item.textContent = (game.game_name || game.game_id || "Unknown game") + (gameTags.length ? " · " + gameTags.map(tag => "#" + tag).join(", ") : "") + developerLabel;
       list.appendChild(item);
     }
 
