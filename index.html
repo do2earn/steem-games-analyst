@@ -5,7 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#14243b">
 <title>Steem Games Analyst | Do2Earn</title>
-<script src="https://cdn.jsdelivr.net/npm/steem@0.7.11/dist/steem.min.js"></script>
+<script>
+(function () {
+  "use strict";
+  const sources = [
+    "https://cdn.jsdelivr.net/npm/@steemit/steem-js@0.7.11/dist/steem.min.js",
+    "https://unpkg.com/@steemit/steem-js@0.7.11/dist/steem.min.js"
+  ];
+  function loadLibrary(index) {
+    const script = document.createElement("script");
+    script.src = sources[index];
+    script.async = true;
+    script.onerror = function () {
+      if (index + 1 < sources.length) loadLibrary(index + 1);
+    };
+    document.head.appendChild(script);
+  }
+  loadLibrary(0);
+})();
+</script>
 <style>
 :root{color-scheme:dark;--bg:#0b1422;--panel:#14243b;--line:#304765;--text:#eef5ff;--muted:#a9bad0;--accent:#65e6a6;--blue:#7bb8ff;--warn:#ffd27d}
 *{box-sizing:border-box}body{margin:0;min-height:100vh;background:linear-gradient(155deg,#12233b,#091321 72%);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
