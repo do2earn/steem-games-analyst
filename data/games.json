@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "updated_at": "2026-10-16",
-  "description": "Initial candidate directory of Steem games and their discovery tags. Inclusion in this file does not prove current activity or verified player counts.",
+  "description": "Candidate directory of Steem games, discovery tags, and developer accounts. Developer accounts were supplied by the project owner; inclusion does not prove current activity or verified player counts.",
   "general_tags": [
     "steemgame"
   ],
@@ -19,7 +19,8 @@
       "discovery_source": "https://steemit.com/hive-166405/@ahsansharif/curation-guidelines-for-steem-games-september-2026",
       "verification_status": "source-listed; current activity not yet verified",
       "notes": "Listed in the September 2026 Steem Games curation guidelines.",
-      "developer": ""
+      "developer": "steemx.org",
+      "developer_source": "project-owner-provided"
     },
     {
       "game_id": "steem4poker",
@@ -49,7 +50,8 @@
       "discovery_source": "https://steemit.com/hive-166405/@ahsansharif/curation-guidelines-for-steem-games-september-2026",
       "verification_status": "source-listed; current activity not yet verified",
       "notes": "Listed in the September 2026 Steem Games curation guidelines.",
-      "developer": ""
+      "developer": "steem-bingo",
+      "developer_source": "project-owner-provided"
     },
     {
       "game_id": "steem-hop",
@@ -64,7 +66,8 @@
       "discovery_source": "https://steemit.com/hive-166405/@ahsansharif/curation-guidelines-for-steem-games-september-2026",
       "verification_status": "source-listed; current activity not yet verified",
       "notes": "Listed in the September 2026 Steem Games curation guidelines.",
-      "developer": ""
+      "developer": "steemhop.org",
+      "developer_source": "project-owner-provided"
     },
     {
       "game_id": "hari-raid",
@@ -79,7 +82,8 @@
       "discovery_source": "https://steemit.com/hive-166405/@ahsansharif/curation-guidelines-for-steem-games-september-2026",
       "verification_status": "source-listed; current activity not yet verified",
       "notes": "Listed in the September 2026 Steem Games curation guidelines.",
-      "developer": ""
+      "developer": "h4lab",
+      "developer_source": "project-owner-provided"
     },
     {
       "game_id": "cur8-games",
@@ -94,7 +98,8 @@
       "discovery_source": "https://steemit.com/hive-166405/@ahsansharif/curation-guidelines-for-steem-games-september-2026",
       "verification_status": "source-listed; current activity not yet verified",
       "notes": "Listed in the September 2026 Steem Games curation guidelines.",
-      "developer": ""
+      "developer": "cur8",
+      "developer_source": "project-owner-provided"
     },
     {
       "game_id": "memory-game",
@@ -109,7 +114,8 @@
       "discovery_source": "https://steemit.com/hive-166405/@ahsansharif/curation-guidelines-for-steem-games-september-2026",
       "verification_status": "source-listed; current activity not yet verified",
       "notes": "Listed in the September 2026 Steem Games curation guidelines.",
-      "developer": ""
+      "developer": "kafio.wit",
+      "developer_source": "project-owner-provided"
     },
     {
       "game_id": "steem4snake",
@@ -124,7 +130,8 @@
       "discovery_source": "https://steemit.com/hive-166405/@ahsansharif/curation-guidelines-for-steem-games-september-2026",
       "verification_status": "tag corrected by project owner; game page needs direct verification",
       "notes": "The correct tag is steem4snake, replacing the earlier steemsnake entry. The supplied game URL is a general games page, not a confirmed direct game URL.",
-      "developer": ""
+      "developer": "friends.witness",
+      "developer_source": "project-owner-provided"
     },
     {
       "game_id": "steem-heights",
@@ -139,7 +146,8 @@
       "discovery_source": "https://steemit.com/hive-166405/@ahsansharif/curation-guidelines-for-steem-games-september-2026",
       "verification_status": "source-listed; current activity not yet verified",
       "notes": "Listed in the September 2026 Steem Games curation guidelines.",
-      "developer": ""
+      "developer": "steempro.com",
+      "developer_source": "project-owner-provided"
     },
     {
       "game_id": "steem-retrogames",
@@ -154,7 +162,8 @@
       "discovery_source": "https://steemit.com/hive-166405/@ahsansharif/curation-guidelines-for-steem-games-september-2026",
       "verification_status": "source-listed; current activity not yet verified",
       "notes": "Listed in the September 2026 Steem Games curation guidelines.",
-      "developer": ""
+      "developer": "steem-retrogames",
+      "developer_source": "project-owner-provided"
     },
     {
       "game_id": "steemmaze",
@@ -184,7 +193,8 @@
       "discovery_source": "https://steemit.com/hive-166405/@ahsansharif/curation-guidelines-for-steem-games-september-2026",
       "verification_status": "source-listed; current activity not yet verified",
       "notes": "Listed in the September 2026 Steem Games curation guidelines.",
-      "developer": ""
+      "developer": "kafio.wit",
+      "developer_source": "project-owner-provided"
     },
     {
       "game_id": "steem-flags",
@@ -202,7 +212,8 @@
       "discovery_source": "Official game website and project owner",
       "verification_status": "project-owner-confirmed; activity metrics not yet collected",
       "notes": "Do2Earn's Steem game. Keep its content activity separate from verified player counts.",
-      "developer": "do2earn"
+      "developer": "do2earn",
+      "developer_source": "project-owner-provided"
     },
     {
       "game_id": "drug-wars",
@@ -231,7 +242,8 @@
       "discovery_source": "Game URL supplied by the project owner",
       "verification_status": "game URL supplied by project owner; dedicated tag and current activity need verification",
       "notes": "Added at the project owner's request. The steem8ball tag is provisional and should be confirmed against actual game-related posts.",
-      "developer": ""
+      "developer": "steemx.org",
+      "developer_source": "project-owner-provided"
     }
   ]
 }
