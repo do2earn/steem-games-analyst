@@ -28,9 +28,9 @@
 :root{color-scheme:dark;--bg:#0b1422;--panel:#14243b;--line:#304765;--text:#eef5ff;--muted:#a9bad0;--accent:#65e6a6;--blue:#7bb8ff;--warn:#ffd27d}
 *{box-sizing:border-box}body{margin:0;min-height:100vh;background:linear-gradient(155deg,#12233b,#091321 72%);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
 main{width:min(850px,100%);margin:auto;padding:22px 15px 45px}.brand{display:flex;gap:13px;align-items:center;margin:8px 0 22px}.logo{display:grid;place-items:center;flex:0 0 50px;height:50px;border-radius:15px;background:#203b5b;font-size:27px}.brand h1{font-size:clamp(22px,5vw,31px);line-height:1.2;margin:0}.brand p{color:var(--muted);margin:5px 0 0;font-size:14px}
-.card{background:rgba(20,36,59,.97);border:1px solid var(--line);border-radius:17px;padding:18px;margin-bottom:15px;box-shadow:0 10px 30px #0002}.card h2{font-size:19px;margin:0 0 7px}.hint{color:var(--muted);font-size:14px;margin:0 0 15px}.field label{display:block;font-size:14px;color:#d7e5f7;margin-bottom:6px}.field input{width:100%;min-height:48px;border:1px solid #47617f;border-radius:11px;background:#0d1b2e;color:var(--text);padding:10px 12px;font:inherit}.field input[type=password]{letter-spacing:.08em}
-.actions{display:flex;gap:10px;margin-top:14px}.btn{border:0;border-radius:11px;padding:12px 18px;min-height:46px;font:700 15px system-ui;cursor:pointer}.primary{background:var(--accent);color:#082519;flex:1}.secondary{background:#263d5b;color:var(--text)}.btn:disabled{opacity:.55;cursor:wait}.status{margin-top:12px;color:var(--muted);font-size:14px;min-height:22px}.error{color:#ffaaa8}.ok{color:var(--accent)}.warn{color:var(--warn)}.small{font-size:12px;color:var(--muted)}.badge{display:inline-block;padding:3px 8px;border-radius:99px;background:#203b5b;color:var(--blue);font-size:12px;font-weight:700}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px}.stat{border:1px solid var(--line);border-radius:12px;padding:12px;background:#102038}.stat strong{display:block;font-size:24px;color:var(--accent)}.stat span{font-size:12px;color:var(--muted)}.game-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.game-tag{padding:6px 9px;border:1px solid #36516f;border-radius:9px;font-size:13px;color:#dceaff}.report-link{color:var(--blue);overflow-wrap:anywhere;font-weight:700}.footer{text-align:center;color:#879bb4;font-size:12px;margin-top:20px}
-[hidden]{display:none!important}@media(max-width:560px){main{padding:15px 11px 32px}.card{padding:14px}.actions{flex-direction:column}.secondary{width:100%}.stats{grid-template-columns:1fr}.brand{align-items:flex-start}}
+.card{background:rgba(20,36,59,.97);border:1px solid var(--line);border-radius:16px;padding:17px;margin-bottom:13px;box-shadow:0 8px 24px #0002;min-width:0}.card h2{font-size:18px;line-height:1.3;margin:0 0 7px}.hint{color:var(--muted);font-size:14px;margin:0 0 13px}.section-step{display:flex;align-items:center;gap:9px;margin-bottom:12px}.step-number{display:grid;place-items:center;flex:0 0 29px;height:29px;border-radius:9px;background:#203b5b;color:var(--accent);font-size:13px;font-weight:800}.section-step h2{margin:0}.dashboard-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.dashboard-grid .stat{min-width:0}.dashboard-grid .stat strong{font-size:clamp(18px,3vw,24px);overflow-wrap:anywhere}.dashboard-grid .stat span{display:block;line-height:1.35}.game-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.game-tag{min-width:0;overflow-wrap:anywhere;line-height:1.35}.report-summary{display:flex;flex-wrap:wrap;align-items:center;gap:8px}.report-summary .hint{margin:0}.field label{display:block;font-size:14px;color:#d7e5f7;margin-bottom:6px}.field input{width:100%;min-height:48px;border:1px solid #47617f;border-radius:11px;background:#0d1b2e;color:var(--text);padding:10px 12px;font:inherit}.field input[type=password]{letter-spacing:.08em}
+.actions{display:flex;gap:10px;margin-top:14px}.btn{border:0;border-radius:11px;padding:12px 18px;min-height:46px;font:700 15px system-ui;cursor:pointer}.primary{background:var(--accent);color:#082519;flex:1}.secondary{background:#263d5b;color:var(--text)}.btn:disabled{opacity:.55;cursor:wait}.status{margin-top:12px;color:var(--muted);font-size:14px;min-height:22px}.error{color:#ffaaa8}.ok{color:var(--accent)}.warn{color:var(--warn)}.small{font-size:12px;color:var(--muted)}.badge{display:inline-block;padding:3px 8px;border-radius:99px;background:#203b5b;color:var(--blue);font-size:12px;font-weight:700}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:12px}.stat{border:1px solid var(--line);border-radius:12px;padding:12px;background:#102038}.stat strong{display:block;font-size:24px;color:var(--accent)}.stat span{font-size:12px;color:var(--muted)}.game-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.game-tag{padding:6px 9px;border:1px solid #36516f;border-radius:9px;font-size:13px;color:#dceaff}.report-link{color:var(--blue);overflow-wrap:anywhere;font-weight:700}.footer{text-align:center;color:#879bb4;font-size:12px;margin-top:20px}
+[hidden]{display:none!important}@media(max-width:560px){main{padding:13px 10px 28px}.card{padding:13px;border-radius:14px;margin-bottom:11px}.actions{flex-direction:column}.btn{width:100%;min-height:44px}.secondary{width:100%}.stats,.dashboard-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.stat{padding:10px}.stat strong{font-size:21px}.stat span{line-height:1.35}.game-list{grid-template-columns:1fr;gap:7px}.brand{align-items:flex-start;margin-bottom:17px}.brand .logo{flex-basis:43px;height:43px;border-radius:12px;font-size:23px}.brand p{font-size:13px}.section-step{margin-bottom:10px}.section-step h2{font-size:17px}}
 </style>
 </head>
 <body>
@@ -48,18 +48,35 @@ main{width:min(850px,100%);margin:auto;padding:22px 15px 45px}.brand{display:fle
 <p class="small">The key is not saved in browser storage, sent to a SGA server, or committed to GitHub. It is used only to verify account ownership; this app does not sign or broadcast transactions. Refreshing or closing the page ends the session.</p>
 </section>
 
-<section class="card" id="dashboard" hidden>
-<h2>Welcome, @do2earn <span class="badge">AUTHORIZED SESSION</span></h2>
-<p class="hint">The game directory and latest automated activity report are loaded from the repository. Statistics are collected daily.</p>
-<div class="stats">
-<div class="stat"><strong id="gameCount">—</strong><span>Games in directory</span></div>
-<div class="stat"><strong id="tagCount">—</strong><span>Dedicated game tags</span></div>
+<div id="dashboard" hidden>
+<section class="card" id="overviewCard">
+<div class="section-step"><span class="step-number">1</span><h2>Dashboard overview</h2></div>
+<p class="hint">Welcome, @do2earn <span class="badge">AUTHORIZED</span></p>
+<div class="dashboard-grid stats">
+<div class="stat"><strong id="gameCount">—</strong><span>Games tracked</span></div>
+<div class="stat"><strong id="tagCount">—</strong><span>Game tags</span></div>
 <div class="stat"><strong>Read-only</strong><span>Steem data access</span></div>
 </div>
-<h2 style="margin-top:20px">Game directory</h2>
-<div class="game-list" id="gameList"></div>
-<h2 style="margin-top:22px">Latest activity report</h2><p id="latestReport" class="hint">Loading the latest report…</p><div id="reportStats" class="stats" hidden><div class="stat"><strong id="reportPostCount">—</strong><span>Posts tagged #steemgame (7 days)</span></div><div class="stat"><strong id="reportAuthorCount">—</strong><span>Unique authors in #steemgame</span></div><div class="stat"><strong id="reportDiscoveryCount">—</strong><span>Discovery candidates</span></div></div><p id="reportCoverage" class="small"></p><div class="status ok" id="dashboardStatus" role="status" aria-live="polite">Login verified. No blockchain transactions will be made.</div>
+<div class="status ok" id="dashboardStatus" role="status" aria-live="polite">Login verified. No blockchain transactions will be made.</div>
 </section>
+
+<section class="card" id="latestReportCard">
+<div class="section-step"><span class="step-number">2</span><h2>Latest activity report</h2></div>
+<p id="latestReport" class="hint">Loading the latest report…</p>
+<div id="reportStats" class="dashboard-grid stats" hidden>
+<div class="stat"><strong id="reportPostCount">—</strong><span>Posts tagged #steemgame (7 days)</span></div>
+<div class="stat"><strong id="reportAuthorCount">—</strong><span>Unique authors</span></div>
+<div class="stat"><strong id="reportDiscoveryCount">—</strong><span>Discovery candidates</span></div>
+</div>
+<p id="reportCoverage" class="small"></p>
+</section>
+
+<section class="card" id="gameDirectoryCard">
+<div class="section-step"><span class="step-number">3</span><h2>Game directory</h2></div>
+<p class="hint">Configured games and their discovery tags.</p>
+<div class="game-list" id="gameList"></div>
+</section>
+</div>
 <p class="footer">Do2Earn · Steem Games Analyst · Access interface reserved for @do2earn</p>
 </main>
 <script>
