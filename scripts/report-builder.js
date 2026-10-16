@@ -150,7 +150,7 @@
       return { gameName: String(game.game_name || game.game_id || "Unknown game"), posts: posts.length, authors: authors.size,
         failed: queryStatus === "Failed", countText, authorText,
         html: '<tr><td class="sga-no"></td><td class="sga-game">' + linkedName + '</td><td class="sga-number">' + countText + '</td><td class="sga-number">' + authorText + '</td><td>' + tagText + '</td></tr>' };
-    }).sort((a, b) => (b.failed ? -1 : b.posts) - (a.failed ? -1 : a.posts) || a.gameName.localeCompare(b.gameName));
+    }).sort((a, b) => { if (a.failed !== b.failed) return a.failed ? 1 : -1; return b.posts - a.posts || a.gameName.localeCompare(b.gameName); });
     rows.forEach((row, index) => { row.html = row.html.replace('<td class="sga-no"></td>', '<td class="sga-no">' + (index + 1) + '</td>'); });
     const tableRows = rows.map(row => row.html).join("\n");
     const monthName = windowEnd.toLocaleString("en-US", {month:"long", timeZone:"UTC"});
@@ -174,7 +174,7 @@
       ? zeroGames.length + " tracked game" + (zeroGames.length === 1 ? " had" : "s had") + " no matching posts in this scan (" + zeroGames.map(row => row.gameName).join(", ") + "). "
       : "";
     const analysisCaveat = "These figures measure public posts and distinct posting accounts matching configured tags, not verified gameplay or actual player counts. A person may publish without playing, and one person may use multiple accounts.";
-    const intro = "Steem gaming spans casual browser games, competitive experiences, strategy games, and community-driven projects. Depending on each game's rules and reward model, participants may earn blockchain tokens, receive STEEM or other crypto rewards, trade in-game assets, or earn through creating gameplay content and community posts. Rewards are not guaranteed and vary by game. This weekly snapshot compares visible content activity across the games tracked by SGA. Posts counts matching dedicated game tags, Authors counts distinct posting accounts in the period, and Dedicated Tags lists the tags used to identify each game's content.";
+    const intro = "Steem gaming spans casual browser games, competitive experiences, strategy games, and community-driven projects. Depending on each game's rules and reward model, participants may earn blockchain tokens, receive STEEM or other crypto rewards, trade in-game assets, or earn through creating gameplay content and community posts. Rewards are not guaranteed and vary by game. In this reporting period, SGA tracked " + games.length + " games and found tag-matched posts for " + activeGames.length + " of them. The table ranks games by post volume; Posts counts matching posts, Authors counts distinct posting accounts in the period, and Dedicated Tags lists the tags used to identify each game's content.";
     const styles = '<style>' +
       'body{font-family:Arial,Helvetica,sans-serif;color:#17263b;line-height:1.65;font-size:15px}' +
       'h1{font-size:25px;line-height:1.25;color:#102b4e;margin:0 0 16px}' +
