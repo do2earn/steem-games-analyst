@@ -1,0 +1,208 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-10-16",
+  "description": "Initial candidate directory of Steem games and their discovery tags. Inclusion in this file does not prove current activity or verified player counts.",
+  "general_tags": [
+    "steemgame"
+  ],
+  "games": [
+    {
+      "game_id": "steem-ludo",
+      "game_name": "Steem Ludo",
+      "tags": [
+        "steemludo"
+      ],
+      "game_url": "https://steemx.org/ludo/game",
+      "tag_urls": [
+        "https://steemit.com/trending/steemludo"
+      ],
+      "discovery_source": "https://steemit.com/hive-166405/@ahsansharif/curation-guidelines-for-steem-games-september-2026",
+      "verification_status": "source-listed; current activity not yet verified",
+      "notes": "Listed in the September 2026 Steem Games curation guidelines."
+    },
+    {
+      "game_id": "steem4poker",
+      "game_name": "Steem4poker",
+      "tags": [
+        "steem4poker"
+      ],
+      "game_url": "https://steem4poker.com/",
+      "tag_urls": [
+        "https://steemit.com/trending/steem4poker"
+      ],
+      "discovery_source": "https://steemit.com/hive-166405/@ahsansharif/curation-guidelines-for-steem-games-september-2026",
+      "verification_status": "source-listed; current activity not yet verified",
+      "notes": "Listed in the September 2026 Steem Games curation guidelines."
+    },
+    {
+      "game_id": "steem-bingo",
+      "game_name": "Steem Bingo",
+      "tags": [
+        "steembingo"
+      ],
+      "game_url": "https://bingo.worldofxpilar.com/",
+      "tag_urls": [
+        "https://steemit.com/trending/steembingo"
+      ],
+      "discovery_source": "https://steemit.com/hive-166405/@ahsansharif/curation-guidelines-for-steem-games-september-2026",
+      "verification_status": "source-listed; current activity not yet verified",
+      "notes": "Listed in the September 2026 Steem Games curation guidelines."
+    },
+    {
+      "game_id": "steem-hop",
+      "game_name": "Steem Hop",
+      "tags": [
+        "steemhop"
+      ],
+      "game_url": "https://steemhop.org/",
+      "tag_urls": [
+        "https://steemit.com/trending/steemhop"
+      ],
+      "discovery_source": "https://steemit.com/hive-166405/@ahsansharif/curation-guidelines-for-steem-games-september-2026",
+      "verification_status": "source-listed; current activity not yet verified",
+      "notes": "Listed in the September 2026 Steem Games curation guidelines."
+    },
+    {
+      "game_id": "hari-raid",
+      "game_name": "Hari Raid",
+      "tags": [
+        "hari-raid"
+      ],
+      "game_url": "https://hari-raid.h4lab.com/",
+      "tag_urls": [
+        "https://steemit.com/trending/hari-raid"
+      ],
+      "discovery_source": "https://steemit.com/hive-166405/@ahsansharif/curation-guidelines-for-steem-games-september-2026",
+      "verification_status": "source-listed; current activity not yet verified",
+      "notes": "Listed in the September 2026 Steem Games curation guidelines."
+    },
+    {
+      "game_id": "cur8-games",
+      "game_name": "Cur8 Games",
+      "tags": [
+        "cur8"
+      ],
+      "game_url": "https://games.cur8.fun/",
+      "tag_urls": [
+        "https://steemit.com/trending/cur8"
+      ],
+      "discovery_source": "https://steemit.com/hive-166405/@ahsansharif/curation-guidelines-for-steem-games-september-2026",
+      "verification_status": "source-listed; current activity not yet verified",
+      "notes": "Listed in the September 2026 Steem Games curation guidelines."
+    },
+    {
+      "game_id": "memory-game",
+      "game_name": "Memory Game",
+      "tags": [
+        "memorygame"
+      ],
+      "game_url": "https://memory-game.steemhub.tech/",
+      "tag_urls": [
+        "https://steemit.com/trending/memorygame"
+      ],
+      "discovery_source": "https://steemit.com/hive-166405/@ahsansharif/curation-guidelines-for-steem-games-september-2026",
+      "verification_status": "source-listed; current activity not yet verified",
+      "notes": "Listed in the September 2026 Steem Games curation guidelines."
+    },
+    {
+      "game_id": "steem4snake",
+      "game_name": "Steem4Snake",
+      "tags": [
+        "steem4snake"
+      ],
+      "game_url": "https://steemone.com/games/",
+      "tag_urls": [
+        "https://steemit.com/trending/steem4snake"
+      ],
+      "discovery_source": "https://steemit.com/hive-166405/@ahsansharif/curation-guidelines-for-steem-games-september-2026",
+      "verification_status": "tag corrected by project owner; game page needs direct verification",
+      "notes": "The correct tag is steem4snake, replacing the earlier steemsnake entry. The supplied game URL is a general games page, not a confirmed direct game URL."
+    },
+    {
+      "game_id": "steem-heights",
+      "game_name": "Steem Heights",
+      "tags": [
+        "steemheights"
+      ],
+      "game_url": "https://www.steempro.com/games/steem-heights",
+      "tag_urls": [
+        "https://steemit.com/trending/steemheights"
+      ],
+      "discovery_source": "https://steemit.com/hive-166405/@ahsansharif/curation-guidelines-for-steem-games-september-2026",
+      "verification_status": "source-listed; current activity not yet verified",
+      "notes": "Listed in the September 2026 Steem Games curation guidelines."
+    },
+    {
+      "game_id": "steem-retrogames",
+      "game_name": "Steem Retrogames",
+      "tags": [
+        "steem-retrogames"
+      ],
+      "game_url": "https://steem-retrogames.com/",
+      "tag_urls": [
+        "https://steemit.com/trending/steem-retrogames"
+      ],
+      "discovery_source": "https://steemit.com/hive-166405/@ahsansharif/curation-guidelines-for-steem-games-september-2026",
+      "verification_status": "source-listed; current activity not yet verified",
+      "notes": "Listed in the September 2026 Steem Games curation guidelines."
+    },
+    {
+      "game_id": "steemmaze",
+      "game_name": "SteemMaze",
+      "tags": [
+        "steemmaze"
+      ],
+      "game_url": "https://maze.steemblocks.com/",
+      "tag_urls": [
+        "https://steemit.com/trending/steemmaze"
+      ],
+      "discovery_source": "https://steemit.com/hive-166405/@ahsansharif/curation-guidelines-for-steem-games-september-2026",
+      "verification_status": "source-listed; current activity not yet verified",
+      "notes": "Listed in the September 2026 Steem Games curation guidelines."
+    },
+    {
+      "game_id": "pixel-craft",
+      "game_name": "Pixel Craft",
+      "tags": [
+        "pixelcraft"
+      ],
+      "game_url": "https://pixelcraft-beta.steemhub.tech/",
+      "tag_urls": [
+        "https://steemit.com/trending/pixelcraft"
+      ],
+      "discovery_source": "https://steemit.com/hive-166405/@ahsansharif/curation-guidelines-for-steem-games-september-2026",
+      "verification_status": "source-listed; current activity not yet verified",
+      "notes": "Listed in the September 2026 Steem Games curation guidelines."
+    },
+    {
+      "game_id": "steem-flags",
+      "game_name": "Steem Flags",
+      "tags": [
+        "steemflags"
+      ],
+      "game_url": "https://steemflags.do2earn.dev",
+      "tag_urls": [
+        "https://steemit.com/created/steemflags"
+      ],
+      "related_accounts": [
+        "do2earn"
+      ],
+      "discovery_source": "Official game website and project owner",
+      "verification_status": "project-owner-confirmed; activity metrics not yet collected",
+      "notes": "Do2Earn's Steem game. Keep its content activity separate from verified player counts."
+    },
+    {
+      "game_id": "drug-wars",
+      "game_name": "Drug Wars",
+      "tags": [
+        "drugwars-fight"
+      ],
+      "tag_urls": [
+        "https://steemit.com/created/drugwars-fight"
+      ],
+      "discovery_source": "https://steemit.com/created/drugwars-fight",
+      "verification_status": "tag supplied by project owner; current activity not yet verified",
+      "notes": "Tag and discovery page supplied by the project owner. Direct game website not yet recorded."
+    }
+  ]
+}
