@@ -1,7 +1,6 @@
 (() => {
   "use strict";
   const API_URL = "https://api.steemit.com";
-  const WINDOW_DAYS = 7;
   const PAGE_SIZE = 100;
   const MAX_PAGES_PER_TAG = 15;
   const $ = id => document.getElementById(id);
@@ -15,7 +14,67 @@
   const progressPercent = $("reportProgressPercent");
   const progressLabel = $("reportProgressLabel");
   const reportStatus = $("createReportStatus");
+  const yearSelect = $("reportYear");
+  const monthSelect = $("reportMonth");
+  const weekSelect = $("reportWeek");
+  const periodRangeLabel = $("selectedPeriodRange");
+  const titleBox = $("reportTitleBox");
+  const tagsBox = $("reportTagsBox");
   let latestGeneratedHtml = "";
+
+
+  const MONTH_NAMES = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+  function getSelectedPeriod() {
+    const year = Number(yearSelect.value);
+    const monthIndex = Number(monthSelect.value);
+    const week = Number(weekSelect.value);
+    const startDay = (week - 1) * 7 + 1;
+    const lastDay = new Date(Date.UTC(year, monthIndex + 1, 0)).getUTCDate();
+    const endDay = Math.min(week === 4 ? lastDay : week * 7, lastDay);
+    const start = new Date(Date.UTC(year, monthIndex, startDay, 0, 0, 0, 0));
+    const end = new Date(Date.UTC(year, monthIndex, endDay, 23, 59, 59, 999));
+    return {year, monthIndex, week, start, end, startDay, endDay, monthName: MONTH_NAMES[monthIndex]};
+  }
+
+  function selectedReportTitle(period) {
+    return "Steem Games Activity Report | " + period.monthName + " " + period.year + " - Week " + period.week;
+  }
+
+  function updatePeriodFields() {
+    const period = getSelectedPeriod();
+    const date = day => String(day).padStart(2, "0");
+    periodRangeLabel.textContent = "Selected range (UTC): " + period.year + "-" +
+      String(period.monthIndex + 1).padStart(2, "0") + "-" + date(period.startDay) +
+      " to " + period.year + "-" + String(period.monthIndex + 1).padStart(2, "0") + "-" + date(period.endDay);
+    titleBox.value = selectedReportTitle(period);
+  }
+
+  function initializePeriodSelectors() {
+    const now = new Date();
+    const currentYear = now.getUTCFullYear();
+    for (let year = 2020; year <= currentYear + 1; year++) {
+      const option = document.createElement("option");
+      option.value = String(year);
+      option.textContent = String(year);
+      yearSelect.appendChild(option);
+    }
+    MONTH_NAMES.forEach((name, index) => {
+      const option = document.createElement("option");
+      option.value = String(index);
+      option.textContent = name;
+      monthSelect.appendChild(option);
+    });
+    yearSelect.value = String(currentYear);
+    monthSelect.value = String(now.getUTCMonth());
+    weekSelect.value = String(Math.min(4, Math.floor((now.getUTCDate() - 1) / 7) + 1));
+    yearSelect.addEventListener("change", updatePeriodFields);
+    monthSelect.addEventListener("change", updatePeriodFields);
+    weekSelect.addEventListener("change", updatePeriodFields);
+    updatePeriodFields();
+  }
+
+  initializePeriodSelectors();
 
   function setProgress(percent, label, className = "") {
     const safePercent = Math.max(0, Math.min(100, Math.round(percent)));
@@ -127,7 +186,7 @@
     };
   }
 
-  function buildReportHtml(games, tagStats, allPosts, windowStart, windowEnd, errors, tagsScanned) {
+  function buildReportHtml(games, tagStats, allPosts, windowStart, windowEnd, errors, tagsScanned, selectedWeek) {
     const uniquePosts = Array.from(allPosts.values());
     const generalTags = new Set(tagsScanned.general);
     const gameTags = new Set(games.flatMap(game => (game.tags || []).map(tag => String(tag).trim().toLowerCase())));
@@ -157,10 +216,8 @@
     }).sort((a, b) => { if (a.failed !== b.failed) return a.failed ? 1 : -1; return b.posts - a.posts || a.gameName.localeCompare(b.gameName); });
     rows.forEach((row, index) => { row.html = row.html.replace('<td class="sga-no"></td>', '<td class="sga-no">' + (index + 1) + '</td>'); });
     const tableRows = rows.map(row => row.html).join("\n");
-    const monthName = windowEnd.toLocaleString("en-US", {month:"long", timeZone:"UTC"});
-    const monthStart = new Date(Date.UTC(windowEnd.getUTCFullYear(), windowEnd.getUTCMonth(), 1));
-    const weekNumber = Math.floor((windowEnd.getUTCDate() + monthStart.getUTCDay() - 1) / 7) + 1;
-    const reportTitle = "Steem Games Activity Report | " + monthName + " " + windowEnd.getUTCFullYear() + " - Week " + weekNumber;
+    const monthName = windowStart.toLocaleString("en-US", {month:"long", timeZone:"UTC"});
+    const reportTitle = "Steem Games Activity Report | " + monthName + " " + windowStart.getUTCFullYear() + " - Week " + selectedWeek;
     const totalPosts = rows.reduce((sum, row) => sum + (row.failed ? 0 : row.posts), 0);
     const totalAuthors = rows.reduce((sum, row) => sum + (row.failed ? 0 : row.authors), 0);
     const activeGames = rows.filter(row => !row.failed && row.posts > 0);
@@ -201,7 +258,7 @@
       : "All " + successfulTags + " tag searches completed without errors. ";
     const limitNote = partialTags ? "The page limit was reached for " + partialTags + " tag" + (partialTags === 1 ? "" : "s") + "; older posts may have been missed. " : "";
     const analysisCaveat = "These figures count public posts and author accounts, not confirmed players. Posting about a game does not prove that someone played it, and one person may use more than one account.";
-    const intro = "This report covers " + games.length + " Steem games over the seven days ending " + utcStamp(windowEnd) + ". " +
+    const intro = "This report covers " + games.length + " Steem games from " + utcStamp(windowStart).slice(0, 10) + " through " + utcStamp(windowEnd).slice(0, 10) + ". " +
       activeGames.length + (activeGames.length === 1 ? " game had" : " games had") + " at least one post under its listed tags. " +
       "The table compares post counts, authors, tags used to find each game's content, and developer profiles where available. " +
       "Rewards, where offered, depend on each game's rules and are not guaranteed.";
@@ -250,7 +307,7 @@
     progressWrap.hidden = false;
     progressBar.value = 0;
     progressPercent.textContent = "0%";
-    setProgress(2, "Loading the game directory and tag configuration…");
+    setProgress(2, "Loading game tags for the selected reporting period…");
     try {
       const [gamesResponse, aliasesResponse] = await Promise.all([
         fetch("data/games.json", {cache: "no-store"}),
@@ -278,12 +335,16 @@
       }
       const allTags = Array.from(new Set([...tagToGames.keys(), ...generalTags])).sort();
       if (!allTags.length) throw new Error("No tags are configured for scanning.");
-      const until = new Date();
-      const since = new Date(until.getTime() - WINDOW_DAYS * 24 * 60 * 60 * 1000);
+      const period = getSelectedPeriod();
+      const since = period.start;
+      const until = period.end;
+      titleBox.value = selectedReportTitle(period);
+      tagsBox.value = Array.from(new Set(games.flatMap(game => (Array.isArray(game.tags) ? game.tags : []).map(tag => String(tag).trim().toLowerCase()).filter(Boolean))))
+        .sort().map(tag => "#" + tag).join(", ");
       const tagStats = {};
       const allPosts = new Map();
       const errors = [];
-      setProgress(4, "Ready to scan " + allTags.length + " configured tags.");
+      setProgress(4, "Ready to scan " + allTags.length + " tags for " + period.monthName + " " + period.year + ", Week " + period.week + ".");
       for (let index = 0; index < allTags.length; index++) {
         const tag = allTags[index];
         const base = 5 + (index / allTags.length) * 70;
@@ -321,15 +382,15 @@
       await new Promise(resolve => setTimeout(resolve, 30));
       setProgress(88, "Building the game activity table and tag diagnostics…");
       await new Promise(resolve => setTimeout(resolve, 30));
-      const reportHtml = buildReportHtml(games, tagStats, allPosts, since, until, errors, {general: Array.from(generalTags)});
+      const reportHtml = buildReportHtml(games, tagStats, allPosts, since, until, errors, {general: Array.from(generalTags)}, period.week);
       setProgress(96, "Preparing the HTML editor…");
       editor.value = reportHtml;
       latestGeneratedHtml = reportHtml;
       $("reportEditorSection").hidden = false;
       copyBtn.disabled = false;
       previewBtn.disabled = false;
-      setProgress(100, "Report ready. Review or edit the HTML, then select Preview.", errors.length ? "warn" : "ok");
-      $("reportResultSummary").textContent = allPosts.size + " unique posts · " + successes + "/" + allTags.length + " tag queries successful · " + errors.length + " errors";
+      setProgress(100, "Report ready for " + period.monthName + " " + period.year + ", Week " + period.week + ". Review or edit the HTML, then select Preview.", errors.length ? "warn" : "ok");
+      $("reportResultSummary").textContent = period.monthName + " " + period.year + ", Week " + period.week + " (" + utcStamp(since).slice(0, 10) + " to " + utcStamp(until).slice(0, 10) + ") · " + allPosts.size + " unique posts · " + successes + "/" + allTags.length + " tag queries successful · " + errors.length + " errors";
     } catch (error) {
       setProgress(progressBar.value, error && error.message ? error.message : "Report generation failed.", "error");
     } finally {
