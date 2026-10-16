@@ -171,16 +171,16 @@
     const leader = topGames[0];
     function normalizeReportText(value) {
       return String(value ?? "")
-        .replace(/\\bSGA scans?\\b/gi, "This report covers")
-        .replace(/\\bthe selected seven-day window\\b/gi, "the seven days covered")
-        .replace(/\\bconfigured dedicated tags\\b/gi, "game tags")
-        .replace(/\\bconfigured-tag scan\\b/gi, "tag search")
-        .replace(/\\btag-matched\\b/gi, "tagged")
-        .replace(/\\bdistinct author accounts\\b/gi, "authors")
-        .replace(/\\bmatching post activity\\b/gi, "posts")
-        .replace(/\\bentries\\b/gi, "games")
-        .replace(/\\s+/g, " ")
-        .replace(/\\s+([,.!?;:])/g, "$1")
+        .replace(/\bSGA scans?\b/gi, "This report covers")
+        .replace(/\bthe selected seven-day window\b/gi, "the seven days covered")
+        .replace(/\bconfigured dedicated tags\b/gi, "game tags")
+        .replace(/\bconfigured-tag scan\b/gi, "tag search")
+        .replace(/\btag-matched\b/gi, "tagged")
+        .replace(/\bdistinct author accounts\b/gi, "authors")
+        .replace(/\bmatching post activity\b/gi, "posts")
+        .replace(/\bentries\b/gi, "games")
+        .replace(/\s+/g, " ")
+        .replace(/\s+([,.!?;:])/g, "$1")
         .trim();
     }
     const windowLabel = utcStamp(windowStart) + " to " + utcStamp(windowEnd);
