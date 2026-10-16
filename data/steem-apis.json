@@ -1,16 +1,18 @@
 {
   "schema_version": 1,
-  "description": "Public Steem JSON-RPC API endpoints tested before each report. The fastest endpoint that successfully answers a lightweight RPC probe is selected for the report scan.",
+  "description": "The exact public Steem RPC API endpoint list used by the Steem Comment Bot. The fastest healthy endpoint is selected before each report scan.",
   "probe_method": "condenser_api.get_dynamic_global_properties",
-  "timeout_ms": 7000,
+  "timeout_ms": 9000,
   "endpoints": [
-    "https://api.steemit.com",
-    "https://api.steem.fans",
-    "https://steem.61bts.com",
-    "https://api.steemyy.com",
-    "https://steem.justyy.com",
     "https://api.justyy.com",
+    "https://steem.justyy.com",
+    "https://api2.steemyy.com",
     "https://api2.justyy.com",
-    "https://steem.senior.workers.dev"
+    "https://api.steemyy.com",
+    "https://api.steemitdev.com",
+    "https://api.steemit.com",
+    "https://api3.justyy.com",
+    "https://steem.senior.workers.dev",
+    "https://api.steem.fans"
   ]
 }
