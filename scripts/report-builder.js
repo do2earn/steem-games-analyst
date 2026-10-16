@@ -91,7 +91,7 @@
     if (!response.ok) throw new Error("Could not load data/steem-apis.json (HTTP " + response.status + ").");
     const config = await response.json();
     const endpoints = Array.isArray(config.endpoints)
-      ? Array.from(new Set(config.endpoints.map(value => String(value).trim().replace(/\\/+$/, "")).filter(value => /^https:\\/\\//i.test(value))))
+      ? Array.from(new Set(config.endpoints.map(value => String(value).trim().replace(/\/$/, "")).filter(value => value.startsWith("https://"))))
       : [];
     if (!endpoints.length) throw new Error("No valid Steem API endpoints are configured in data/steem-apis.json.");
     const method = String(config.probe_method || "condenser_api.get_dynamic_global_properties");
