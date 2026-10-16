@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-16T09:19:23Z",
+  "generated_at": "2026-10-16T12:32:23Z",
   "window": {
-    "start": "2026-10-09T09:19:23Z",
-    "end": "2026-10-16T09:19:23Z",
+    "start": "2026-10-09T12:32:23Z",
+    "end": "2026-10-16T12:32:23Z",
     "days": 7
   },
   "api_endpoint": "https://api.steemit.com",
@@ -37,7 +37,7 @@
       "status": "ok"
     },
     "drugwars-fight": {
-      "post_count": 77,
+      "post_count": 69,
       "unique_authors": 22,
       "pages_fetched": 1,
       "reached_window_start": true,
@@ -85,7 +85,7 @@
       "status": "ok"
     },
     "steem4snake": {
-      "post_count": 44,
+      "post_count": 43,
       "unique_authors": 12,
       "pages_fetched": 1,
       "reached_window_start": true,
@@ -109,7 +109,7 @@
       "status": "ok"
     },
     "steemgame": {
-      "post_count": 155,
+      "post_count": 156,
       "unique_authors": 48,
       "pages_fetched": 2,
       "reached_window_start": true,
@@ -198,6 +198,30 @@
       ],
       "posts": [
         {
+          "author": "umme-mawa",
+          "permlink": "4pcibr-i-lost-my-battle-today-playing-with-the-bot",
+          "title": "I Lost My Battle Today Playing With the Bot",
+          "created": "2026-10-16T09:47:54Z",
+          "url": "https://steemit.com/@umme-mawa/4pcibr-i-lost-my-battle-today-playing-with-the-bot",
+          "matched_tag": "steemgame",
+          "tags": [
+            "hive-113640",
+            "steemgame",
+            "steemludo",
+            "steemexclusive",
+            "bangladesh",
+            "newcomer"
+          ],
+          "net_votes": 0,
+          "children": 0,
+          "pending_payout_value": "0.000 SBD",
+          "active_votes_count": 1,
+          "matched_tags": [
+            "steemgame",
+            "steemludo"
+          ]
+        },
+        {
           "author": "shahid.ikram",
           "permlink": "two-strong-players-one-powerful-victory-in-steemludo-v1by27",
           "title": "🏆 Two Strong Players, One Powerful Victory in #SteemLudo!🔥",
@@ -215,9 +239,9 @@
             "battle"
           ],
           "net_votes": 0,
-          "children": 0,
-          "pending_payout_value": "0.157 SBD",
-          "active_votes_count": 2,
+          "children": 1,
+          "pending_payout_value": "2.820 SBD",
+          "active_votes_count": 3,
           "matched_tags": [
             "steemgame",
             "steemhop",
@@ -2463,30 +2487,6 @@
             "steemgame",
             "steemludo"
           ]
-        },
-        {
-          "author": "alif82",
-          "permlink": "palying-1vs1-5-steem-ludo-challenge",
-          "title": "Palying   1vs1   5   Steem ludo challenge",
-          "created": "2026-10-09T12:00:06Z",
-          "url": "https://steemit.com/@alif82/palying-1vs1-5-steem-ludo-challenge",
-          "matched_tag": "steemgame",
-          "tags": [
-            "steemgame",
-            "steemludo",
-            "gameplay",
-            "game",
-            "steemexclusive",
-            "cur8"
-          ],
-          "net_votes": 0,
-          "children": 1,
-          "pending_payout_value": "0.958 SBD",
-          "active_votes_count": 29,
-          "matched_tags": [
-            "steemgame",
-            "steemludo"
-          ]
         }
       ],
       "query_status": "ok"
@@ -2620,9 +2620,9 @@
             "battle"
           ],
           "net_votes": 0,
-          "children": 0,
-          "pending_payout_value": "0.157 SBD",
-          "active_votes_count": 2,
+          "children": 1,
+          "pending_payout_value": "2.820 SBD",
+          "active_votes_count": 3,
           "matched_tags": [
             "steemgame",
             "steemhop",
@@ -2772,8 +2772,8 @@
           ],
           "net_votes": 0,
           "children": 1,
-          "pending_payout_value": "0.462 SBD",
-          "active_votes_count": 4,
+          "pending_payout_value": "0.539 SBD",
+          "active_votes_count": 5,
           "matched_tags": [
             "steemhop"
           ]
@@ -4178,8 +4178,8 @@
           ],
           "net_votes": 0,
           "children": 1,
-          "pending_payout_value": "6.321 SBD",
-          "active_votes_count": 28,
+          "pending_payout_value": "6.780 SBD",
+          "active_votes_count": 36,
           "matched_tags": [
             "hari-raid"
           ]
@@ -4200,8 +4200,8 @@
           ],
           "net_votes": 0,
           "children": 0,
-          "pending_payout_value": "1.108 SBD",
-          "active_votes_count": 8,
+          "pending_payout_value": "1.122 SBD",
+          "active_votes_count": 10,
           "matched_tags": [
             "hari-raid"
           ]
@@ -4289,8 +4289,8 @@
           ],
           "net_votes": 0,
           "children": 0,
-          "pending_payout_value": "0.021 SBD",
-          "active_votes_count": 3,
+          "pending_payout_value": "0.070 SBD",
+          "active_votes_count": 4,
           "matched_tags": [
             "hari-raid"
           ]
@@ -4982,6 +4982,50 @@
       ],
       "posts": [
         {
+          "author": "dexpartacus",
+          "permlink": "tesla-fa-volare-un-auto-ma-quanto-ci-guadagna",
+          "title": "TESLA FA VOLARE UN'AUTO. MA QUANTO CI GUADAGNA?",
+          "created": "2026-10-16T12:16:18Z",
+          "url": "https://steemit.com/@dexpartacus/tesla-fa-volare-un-auto-ma-quanto-ci-guadagna",
+          "matched_tag": "cur8",
+          "tags": [
+            "cur8",
+            "tesla",
+            "teslaroadster",
+            "elonmusk"
+          ],
+          "net_votes": 0,
+          "children": 0,
+          "pending_payout_value": "0.284 SBD",
+          "active_votes_count": 16,
+          "matched_tags": [
+            "cur8"
+          ]
+        },
+        {
+          "author": "snehuu",
+          "permlink": "jugando-a-mi-favorito-de-la-infancia-el-juego-sky-tower-kddhgm",
+          "title": "Jugando a mi favorito de la infancia: el juego Sky Tower",
+          "created": "2026-10-16T10:48:06Z",
+          "url": "https://steemit.com/@snehuu/jugando-a-mi-favorito-de-la-infancia-el-juego-sky-tower-kddhgm",
+          "matched_tag": "cur8",
+          "tags": [
+            "steemgame",
+            "cur8",
+            "game",
+            "steem",
+            "steemexclusive"
+          ],
+          "net_votes": 0,
+          "children": 1,
+          "pending_payout_value": "0.000 SBD",
+          "active_votes_count": 3,
+          "matched_tags": [
+            "cur8",
+            "steemgame"
+          ]
+        },
+        {
           "author": "micro.cur8",
           "permlink": "pings-20261016",
           "title": "Cur8 Pings · Oct 16, 2026",
@@ -4994,7 +5038,7 @@
             "pings"
           ],
           "net_votes": 0,
-          "children": 0,
+          "children": 4,
           "pending_payout_value": "0.000 SBD",
           "active_votes_count": 0,
           "matched_tags": [
@@ -5018,8 +5062,8 @@
           ],
           "net_votes": 0,
           "children": 1,
-          "pending_payout_value": "4.193 SBD",
-          "active_votes_count": 147,
+          "pending_payout_value": "4.241 SBD",
+          "active_votes_count": 149,
           "matched_tags": [
             "cur8"
           ]
@@ -5159,8 +5203,8 @@
           ],
           "net_votes": 0,
           "children": 1,
-          "pending_payout_value": "0.771 SBD",
-          "active_votes_count": 22,
+          "pending_payout_value": "0.886 SBD",
+          "active_votes_count": 24,
           "matched_tags": [
             "cur8"
           ]
@@ -5273,7 +5317,7 @@
             "pings"
           ],
           "net_votes": 0,
-          "children": 8,
+          "children": 9,
           "pending_payout_value": "0.000 SBD",
           "active_votes_count": 0,
           "matched_tags": [
@@ -6769,49 +6813,6 @@
             "steemgame",
             "steemludo"
           ]
-        },
-        {
-          "author": "supsnehal",
-          "permlink": "my-gaming-journey-on-cur8-games-level-101-ivq0yq",
-          "title": "My Gaming Journey on Cur8 Games 🎮 Level 101",
-          "created": "2026-10-09T12:16:03Z",
-          "url": "https://steemit.com/@supsnehal/my-gaming-journey-on-cur8-games-level-101-ivq0yq",
-          "matched_tag": "cur8",
-          "tags": [
-            "hive-159863",
-            "cur8",
-            "games",
-            "steem",
-            "gaming",
-            "achievement"
-          ],
-          "net_votes": 0,
-          "children": 1,
-          "pending_payout_value": "0.243 SBD",
-          "active_votes_count": 11,
-          "matched_tags": [
-            "cur8"
-          ]
-        },
-        {
-          "author": "dexpartacus",
-          "permlink": "19-paesi-in-4-continenti",
-          "title": "19 PAESI IN 4 CONTINENTI",
-          "created": "2026-10-09T10:03:54Z",
-          "url": "https://steemit.com/@dexpartacus/19-paesi-in-4-continenti",
-          "matched_tag": "cur8",
-          "tags": [
-            "cur8",
-            "finance",
-            "freedom"
-          ],
-          "net_votes": 0,
-          "children": 0,
-          "pending_payout_value": "0.111 SBD",
-          "active_votes_count": 9,
-          "matched_tags": [
-            "cur8"
-          ]
         }
       ],
       "query_status": "ok"
@@ -7072,7 +7073,7 @@
         "steem4snake"
       ],
       "game_url": "https://steemone.com/games/",
-      "posts_found": 44,
+      "posts_found": 43,
       "unique_authors": 12,
       "authors": [
         "artemisa7",
@@ -8154,31 +8155,6 @@
             "steem4snake",
             "steemgame"
           ]
-        },
-        {
-          "author": "victornavarro",
-          "permlink": "4nfwdu-steem4snake-or-temporada-02-legends-never-die-powered-by-friends-witness",
-          "title": "STEEM4SNAKE 🐍 | Temporada: 02 – Legends Never Die Powered by @friends.witness",
-          "created": "2026-10-09T12:21:45Z",
-          "url": "https://steemit.com/@victornavarro/4nfwdu-steem4snake-or-temporada-02-legends-never-die-powered-by-friends-witness",
-          "matched_tag": "steem4snake",
-          "tags": [
-            "steemvideo",
-            "steem4snake",
-            "steemgame",
-            "contest",
-            "steemexclusive",
-            "gamesplay2earn",
-            "steemsnakes"
-          ],
-          "net_votes": 0,
-          "children": 1,
-          "pending_payout_value": "0.290 SBD",
-          "active_votes_count": 25,
-          "matched_tags": [
-            "steem4snake",
-            "steemgame"
-          ]
         }
       ],
       "query_status": "ok"
@@ -8729,7 +8705,7 @@
         "drugwars-fight"
       ],
       "game_url": null,
-      "posts_found": 77,
+      "posts_found": 69,
       "unique_authors": 22,
       "authors": [
         "alpha-omega",
@@ -8756,6 +8732,69 @@
         "yiliyasaber"
       ],
       "posts": [
+        {
+          "author": "yiliyasaber",
+          "permlink": "yil2e42304a9f",
+          "title": "Check my latest fight ! yiliyasaber vs  The Goverment",
+          "created": "2026-10-16T12:28:54Z",
+          "url": "https://steemit.com/@yiliyasaber/yil2e42304a9f",
+          "matched_tag": "drugwars-fight",
+          "tags": [
+            "drugwars-fight",
+            "gaming",
+            "fight",
+            "dw"
+          ],
+          "net_votes": 0,
+          "children": 1,
+          "pending_payout_value": "0.018 SBD",
+          "active_votes_count": 2,
+          "matched_tags": [
+            "drugwars-fight"
+          ]
+        },
+        {
+          "author": "stefannikolov",
+          "permlink": "stedcf9cd331b",
+          "title": "Check my latest fight ! lostsoul vs  The Goverment",
+          "created": "2026-10-16T12:06:45Z",
+          "url": "https://steemit.com/@stefannikolov/stedcf9cd331b",
+          "matched_tag": "drugwars-fight",
+          "tags": [
+            "drugwars-fight",
+            "gaming",
+            "fight",
+            "dw"
+          ],
+          "net_votes": 0,
+          "children": 1,
+          "pending_payout_value": "0.029 SBD",
+          "active_votes_count": 3,
+          "matched_tags": [
+            "drugwars-fight"
+          ]
+        },
+        {
+          "author": "servelle",
+          "permlink": "ser261c50c45f",
+          "title": "Check my latest fight ! servelle vs  The Goverment",
+          "created": "2026-10-16T09:20:42Z",
+          "url": "https://steemit.com/@servelle/ser261c50c45f",
+          "matched_tag": "drugwars-fight",
+          "tags": [
+            "drugwars-fight",
+            "gaming",
+            "fight",
+            "dw"
+          ],
+          "net_votes": 0,
+          "children": 2,
+          "pending_payout_value": "0.100 SBD",
+          "active_votes_count": 11,
+          "matched_tags": [
+            "drugwars-fight"
+          ]
+        },
         {
           "author": "circlebubble",
           "permlink": "lr1hb-check-my-latest-fight-circlebubble-vs-the-goverment",
@@ -10141,243 +10180,33 @@
           "matched_tags": [
             "drugwars-fight"
           ]
-        },
-        {
-          "author": "circlebubble",
-          "permlink": "ujna6-check-my-latest-fight-circlebubble-vs-the-goverment",
-          "title": "Check my latest fight ! circlebubble vs The Goverment",
-          "created": "2026-10-09T12:25:00Z",
-          "url": "https://steemit.com/@circlebubble/ujna6-check-my-latest-fight-circlebubble-vs-the-goverment",
-          "matched_tag": "drugwars-fight",
-          "tags": [
-            "drugwars-fight",
-            "gaming",
-            "fight",
-            "dw"
-          ],
-          "net_votes": 0,
-          "children": 0,
-          "pending_payout_value": "0.181 SBD",
-          "active_votes_count": 2,
-          "matched_tags": [
-            "drugwars-fight"
-          ]
-        },
-        {
-          "author": "dw-azsg0684ed4g",
-          "permlink": "dw-a6856e4973",
-          "title": "Check my latest fight ! freisein vs dw 9 la",
-          "created": "2026-10-09T10:46:51Z",
-          "url": "https://steemit.com/@dw-azsg0684ed4g/dw-a6856e4973",
-          "matched_tag": "drugwars-fight",
-          "tags": [
-            "drugwars-fight",
-            "gaming",
-            "fight",
-            "dw"
-          ],
-          "net_votes": 0,
-          "children": 1,
-          "pending_payout_value": "0.033 SBD",
-          "active_votes_count": 2,
-          "matched_tags": [
-            "drugwars-fight"
-          ]
-        },
-        {
-          "author": "dw-a3vde684ebfd",
-          "permlink": "dw-07a06a7292",
-          "title": "Check my latest fight ! freisein vs dw 8 la",
-          "created": "2026-10-09T10:46:33Z",
-          "url": "https://steemit.com/@dw-a3vde684ebfd/dw-07a06a7292",
-          "matched_tag": "drugwars-fight",
-          "tags": [
-            "drugwars-fight",
-            "gaming",
-            "fight",
-            "dw"
-          ],
-          "net_votes": 0,
-          "children": 1,
-          "pending_payout_value": "0.032 SBD",
-          "active_votes_count": 2,
-          "matched_tags": [
-            "drugwars-fight"
-          ]
-        },
-        {
-          "author": "dw-ahp1b684eb71",
-          "permlink": "dw-af7086cab0",
-          "title": "Check my latest fight ! freisein vs dw 7 la",
-          "created": "2026-10-09T10:46:15Z",
-          "url": "https://steemit.com/@dw-ahp1b684eb71/dw-af7086cab0",
-          "matched_tag": "drugwars-fight",
-          "tags": [
-            "drugwars-fight",
-            "gaming",
-            "fight",
-            "dw"
-          ],
-          "net_votes": 0,
-          "children": 1,
-          "pending_payout_value": "0.031 SBD",
-          "active_votes_count": 2,
-          "matched_tags": [
-            "drugwars-fight"
-          ]
-        },
-        {
-          "author": "dw-ahvs6684c44s",
-          "permlink": "dw-c98a37e6ba",
-          "title": "Check my latest fight ! freisein vs dw 6 la",
-          "created": "2026-10-09T10:45:57Z",
-          "url": "https://steemit.com/@dw-ahvs6684c44s/dw-c98a37e6ba",
-          "matched_tag": "drugwars-fight",
-          "tags": [
-            "drugwars-fight",
-            "gaming",
-            "fight",
-            "dw"
-          ],
-          "net_votes": 0,
-          "children": 1,
-          "pending_payout_value": "0.031 SBD",
-          "active_votes_count": 2,
-          "matched_tags": [
-            "drugwars-fight"
-          ]
-        },
-        {
-          "author": "dw-awvbl684c39b",
-          "permlink": "dw-3dc44eeab7",
-          "title": "Check my latest fight ! freisein vs dw 5 la",
-          "created": "2026-10-09T10:45:39Z",
-          "url": "https://steemit.com/@dw-awvbl684c39b/dw-3dc44eeab7",
-          "matched_tag": "drugwars-fight",
-          "tags": [
-            "drugwars-fight",
-            "gaming",
-            "fight",
-            "dw"
-          ],
-          "net_votes": 0,
-          "children": 1,
-          "pending_payout_value": "0.030 SBD",
-          "active_votes_count": 2,
-          "matched_tags": [
-            "drugwars-fight"
-          ]
-        },
-        {
-          "author": "dw-awpoz684a32o",
-          "permlink": "dw-7bc06d6f98",
-          "title": "Check my latest fight ! freisein vs dw 4 la",
-          "created": "2026-10-09T10:45:24Z",
-          "url": "https://steemit.com/@dw-awpoz684a32o/dw-7bc06d6f98",
-          "matched_tag": "drugwars-fight",
-          "tags": [
-            "drugwars-fight",
-            "gaming",
-            "fight",
-            "dw"
-          ],
-          "net_votes": 0,
-          "children": 1,
-          "pending_payout_value": "0.030 SBD",
-          "active_votes_count": 2,
-          "matched_tags": [
-            "drugwars-fight"
-          ]
-        },
-        {
-          "author": "upv4life",
-          "permlink": "upv6466877713",
-          "title": "Check my latest fight ! freisein vs upv4life",
-          "created": "2026-10-09T10:42:30Z",
-          "url": "https://steemit.com/@upv4life/upv6466877713",
-          "matched_tag": "drugwars-fight",
-          "tags": [
-            "drugwars-fight",
-            "gaming",
-            "fight",
-            "dw"
-          ],
-          "net_votes": 0,
-          "children": 1,
-          "pending_payout_value": "0.046 SBD",
-          "active_votes_count": 2,
-          "matched_tags": [
-            "drugwars-fight"
-          ]
-        },
-        {
-          "author": "honolulu",
-          "permlink": "hon50339d5e88",
-          "title": "Check my latest fight ! freisein vs honolulu",
-          "created": "2026-10-09T10:37:03Z",
-          "url": "https://steemit.com/@honolulu/hon50339d5e88",
-          "matched_tag": "drugwars-fight",
-          "tags": [
-            "drugwars-fight",
-            "gaming",
-            "fight",
-            "dw"
-          ],
-          "net_votes": 0,
-          "children": 1,
-          "pending_payout_value": "0.708 SBD",
-          "active_votes_count": 4,
-          "matched_tags": [
-            "drugwars-fight"
-          ]
-        },
-        {
-          "author": "freisein",
-          "permlink": "frea6856e4973",
-          "title": "Check my latest fight ! freisein vs dw 9 la",
-          "created": "2026-10-09T10:34:39Z",
-          "url": "https://steemit.com/@freisein/frea6856e4973",
-          "matched_tag": "drugwars-fight",
-          "tags": [
-            "drugwars-fight",
-            "gaming",
-            "fight",
-            "dw"
-          ],
-          "net_votes": 0,
-          "children": 1,
-          "pending_payout_value": "0.685 SBD",
-          "active_votes_count": 3,
-          "matched_tags": [
-            "drugwars-fight"
-          ]
-        },
-        {
-          "author": "dw-fj9741015707",
-          "permlink": "gok6v4mhhu",
-          "title": "Check my latest fight ! dw-fj9741015707 vs The Goverment",
-          "created": "2026-10-09T10:30:42Z",
-          "url": "https://steemit.com/@dw-fj9741015707/gok6v4mhhu",
-          "matched_tag": "drugwars-fight",
-          "tags": [
-            "drugwars-fight",
-            "gaming",
-            "fight",
-            "dw"
-          ],
-          "net_votes": 0,
-          "children": 0,
-          "pending_payout_value": "0.000 SBD",
-          "active_votes_count": 0,
-          "matched_tags": [
-            "drugwars-fight"
-          ]
         }
       ],
       "query_status": "ok"
     }
   ],
   "discovery_candidates": [
+    {
+      "author": "hafsa001",
+      "permlink": "jugando-a-steem-height-por-primera-vez-en-la-historia-1e7xjq",
+      "title": "Jugando a Steem-height por primera vez en la historia.",
+      "created": "2026-10-16T10:30:09Z",
+      "url": "https://steemit.com/@hafsa001/jugando-a-steem-height-por-primera-vez-en-la-historia-1e7xjq",
+      "matched_tag": "steemgame",
+      "tags": [
+        "steemgame",
+        "steem-height",
+        "steemit",
+        "steemexclusive"
+      ],
+      "net_votes": 0,
+      "children": 0,
+      "pending_payout_value": "0.000 SBD",
+      "active_votes_count": 3,
+      "matched_tags": [
+        "steemgame"
+      ]
+    },
     {
       "author": "muhammadalizeb",
       "permlink": "my-8-ball-experience-or-an-exciting-match-against-kavya-reddy",
