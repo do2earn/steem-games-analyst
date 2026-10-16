@@ -1,6 +1,13 @@
 name: SGA - Collect Steem Game Statistics
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/collect_stats.py"
+      - "data/games.json"
+      - "data/aliases.json"
+      - ".github/workflows/collect-stats.yml"
   workflow_dispatch:
   schedule:
     - cron: "23 4 * * *"
