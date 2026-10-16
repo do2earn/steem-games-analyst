@@ -217,6 +217,21 @@
       "verification_status": "tag supplied by project owner; current activity not yet verified",
       "notes": "Tag and discovery page supplied by the project owner. Direct game website not yet recorded.",
       "developer": ""
+    },
+    {
+      "game_id": "steem-8-ball",
+      "game_name": "Steem 8 Ball",
+      "tags": [
+        "steem8ball"
+      ],
+      "game_url": "https://www.steemx.org/8ballpool",
+      "tag_urls": [
+        "https://steemit.com/created/steem8ball"
+      ],
+      "discovery_source": "Game URL supplied by the project owner",
+      "verification_status": "game URL supplied by project owner; dedicated tag and current activity need verification",
+      "notes": "Added at the project owner's request. The steem8ball tag is provisional and should be confirmed against actual game-related posts.",
+      "developer": ""
     }
   ]
 }
