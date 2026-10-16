@@ -147,9 +147,13 @@
       const gameUrl = typeof game.game_url === "string" && /^https:\/\//i.test(game.game_url) ? game.game_url : "";
       const linkedName = gameUrl ? '<a href="' + escapeHtml(gameUrl) + '">' + name + '</a>' : name;
       const tagText = ownTags.map(tag => '<span class="sga-tag">#' + escapeHtml(tag) + '</span>').join(" ") || "—";
+      const developer = String(game.developer || "").trim().replace(/^@/, "");
+      const developerText = /^[a-z0-9.-]{3,16}$/.test(developer)
+        ? '<a href="https://steemit.com/@' + encodeURIComponent(developer) + '">@' + escapeHtml(developer) + '</a>'
+        : "—";
       return { gameName: String(game.game_name || game.game_id || "Unknown game"), posts: posts.length, authors: authors.size,
         failed: queryStatus === "Failed", countText, authorText,
-        html: '<tr><td class="sga-no"></td><td class="sga-game">' + linkedName + '</td><td class="sga-number">' + countText + '</td><td class="sga-number">' + authorText + '</td><td>' + tagText + '</td></tr>' };
+        html: '<tr><td class="sga-no"></td><td class="sga-game">' + linkedName + '</td><td class="sga-number">' + countText + '</td><td class="sga-number">' + authorText + '</td><td>' + tagText + '</td><td>' + developerText + '</td></tr>' };
     }).sort((a, b) => { if (a.failed !== b.failed) return a.failed ? 1 : -1; return b.posts - a.posts || a.gameName.localeCompare(b.gameName); });
     rows.forEach((row, index) => { row.html = row.html.replace('<td class="sga-no"></td>', '<td class="sga-no">' + (index + 1) + '</td>'); });
     const tableRows = rows.map(row => row.html).join("\n");
@@ -174,14 +178,14 @@
       ? zeroGames.length + " tracked game" + (zeroGames.length === 1 ? " had" : "s had") + " no matching posts in this scan (" + zeroGames.map(row => row.gameName).join(", ") + "). "
       : "";
     const analysisCaveat = "These figures measure public posts and distinct posting accounts matching configured tags, not verified gameplay or actual player counts. A person may publish without playing, and one person may use multiple accounts.";
-    const intro = "Steem gaming spans casual browser games, competitive experiences, strategy games, and community-driven projects. Depending on each game's rules and reward model, participants may earn blockchain tokens, receive STEEM or other crypto rewards, trade in-game assets, or earn through creating gameplay content and community posts. Rewards are not guaranteed and vary by game. In this reporting period, SGA tracked " + games.length + " games and found tag-matched posts for " + activeGames.length + " of them. The table ranks games by post volume; Posts counts matching posts, Authors counts distinct posting accounts in the period, and Dedicated Tags lists the tags used to identify each game's content.";
+    const intro = "Steem gaming spans casual browser games, competitive experiences, strategy games, and community-driven projects. Depending on each game's rules and reward model, participants may earn blockchain tokens, receive STEEM or other crypto rewards, trade in-game assets, or earn through creating gameplay content and community posts. Rewards are not guaranteed and vary by game. In this reporting period, SGA tracked " + games.length + " games and found tag-matched posts for " + activeGames.length + " of them. The table ranks games by post volume; Posts counts matching posts, Authors counts distinct posting accounts in the period, and Dedicated Tags lists the tags used to identify each game's content, and Developer links to the listed developer's Steem profile when known.";
     const styles = '<style>' +
       'body{font-family:Arial,Helvetica,sans-serif;color:#17263b;line-height:1.65;font-size:15px}' +
       'h1{font-size:25px;line-height:1.25;color:#102b4e;margin:0 0 16px}' +
       'h2{font-size:19px;color:#173d63;margin:25px 0 10px}' +
       '.sga-intro{padding:15px 17px;background:#f1f7ff;border:1px solid #d7e7fa;border-radius:14px}' +
       '.sga-table-wrap{margin:16px 0;overflow-x:auto;border:1px solid #d5e1ef;border-radius:14px}' +
-      'table.sga-table{border-collapse:separate;border-spacing:0;width:100%;min-width:560px;font-size:14px;background:#fff}' +
+      'table.sga-table{border-collapse:separate;border-spacing:0;width:100%;min-width:650px;font-size:14px;background:#fff}' +
       '.sga-table th{background:#173d63;color:#fff;padding:12px 10px;text-align:left;font-weight:700}' +
       '.sga-table th:first-child{border-top-left-radius:12px}.sga-table th:last-child{border-top-right-radius:12px}' +
       '.sga-table td{padding:11px 10px;border-bottom:1px solid #e4ebf3;vertical-align:top}' +
@@ -194,7 +198,7 @@
     return styles +
       '<h1>' + escapeHtml(reportTitle) + '</h1>' +
       '<div class="sga-intro"><p>' + escapeHtml(intro) + '</p></div>' +
-      '<div class="sga-table-wrap"><table class="sga-table"><thead><tr><th>No.</th><th>Game</th><th>Posts</th><th>Authors</th><th>Dedicated Tags</th></tr></thead><tbody>' + tableRows + '</tbody></table></div>' +
+      '<div class="sga-table-wrap"><table class="sga-table"><thead><tr><th>No.</th><th>Game</th><th>Posts</th><th>Authors</th><th>Dedicated Tags</th><th>Developer</th></tr></thead><tbody>' + tableRows + '</tbody></table></div>' +
       '<h2>Activity Analysis</h2>' +
       '<div class="sga-analysis"><p>' + escapeHtml(analysisOne) + '</p><p>' + escapeHtml(analysisTwo + analysisCaveat) + '</p></div>';
   }
