@@ -169,56 +169,42 @@
     const topThree = topGames.slice(0, 3);
     const topShare = totalPosts ? Math.round(topThree.reduce((sum, row) => sum + row.posts, 0) / totalPosts * 100) : 0;
     const leader = topGames[0];
-    const choose = options => options[Math.floor(Math.random() * options.length)];
+    function normalizeReportText(value) {
+      return String(value ?? "")
+        .replace(/\\bSGA scans?\\b/gi, "This report covers")
+        .replace(/\\bthe selected seven-day window\\b/gi, "the seven days covered")
+        .replace(/\\bconfigured dedicated tags\\b/gi, "game tags")
+        .replace(/\\bconfigured-tag scan\\b/gi, "tag search")
+        .replace(/\\btag-matched\\b/gi, "tagged")
+        .replace(/\\bdistinct author accounts\\b/gi, "authors")
+        .replace(/\\bmatching post activity\\b/gi, "posts")
+        .replace(/\\bentries\\b/gi, "games")
+        .replace(/\\s+/g, " ")
+        .replace(/\\s+([,.!?;:])/g, "$1")
+        .trim();
+    }
     const windowLabel = utcStamp(windowStart) + " to " + utcStamp(windowEnd);
     const generatedAt = utcStamp(new Date());
     const successfulTags = Object.values(tagStats).filter(item => item.status === "ok").length;
     const failedTags = Object.values(tagStats).filter(item => item.status === "error").length;
     const partialTags = Object.values(tagStats).filter(item => item.status === "ok" && item.page_limit_reached).length;
     const analysisOne = activeGames.length
-      ? choose([
-          "Across the " + games.length + " games monitored, " + activeGames.length + " recorded at least one matching post. " + (leader ? leader.gameName + " ranked first with " + leader.posts + " posts from " + leader.authors + " distinct author accounts." : "No leading game could be identified.") + (topThree.length > 1 ? " The top three entries contributed " + topShare + "% of all game-table post counts." : ""),
-          "The scan found activity for " + activeGames.length + " out of " + games.length + " tracked games. " + (leader ? "The highest post count belonged to " + leader.gameName + " (" + leader.posts + " posts; " + leader.authors + " authors)." : "No game ranked above the others.") + (topThree.length > 1 ? " The three leading entries represented " + topShare + "% of the summed game-table counts." : ""),
-          "Dedicated-tag activity appeared for " + activeGames.length + " tracked games during this window. " + (leader ? leader.gameName + " was the most frequently posted-about game, with " + leader.posts + " posts and " + leader.authors + " authors." : "No clear activity leader emerged.") + (topThree.length > 1 ? " Combined, the three most active entries made up " + topShare + "% of the table's post counts." : "")
-        ])
-      : choose([
-          "The scan did not find matching posts for any tracked game under its configured dedicated tags.",
-          "No tracked game returned a matching post in the configured-tag scan for this reporting window.",
-          "No dedicated-tag activity was detected for the games in this directory during the selected period."
-        ]);
+      ? activeGames.length + " of " + games.length + " tracked games had posts during this period. " +
+        (leader ? leader.gameName + " was the most active, with " + leader.posts + " posts from " + leader.authors + " authors." : "No game stood out as the activity leader.") +
+        (topThree.length > 1 ? " The three busiest games accounted for " + topShare + "% of the post counts in the table." : "")
+      : "No posts were found for the tracked games during this period.";
     const analysisTwo = zeroGames.length
-      ? choose([
-          zeroGames.length + " game" + (zeroGames.length === 1 ? " had" : "s had") + " no matching posts in this scan: " + zeroGames.map(row => row.gameName).join(", ") + ". ",
-          "No matching posts were found for " + zeroGames.length + " tracked game" + (zeroGames.length === 1 ? "" : "s") + ": " + zeroGames.map(row => row.gameName).join(", ") + ". ",
-          "The zero-post entries for this period are " + zeroGames.map(row => row.gameName).join(", ") + " (" + zeroGames.length + " total). "
-        ])
-      : choose([
-          "Every successfully queried game had at least one matching post. ",
-          "No zero-post games were recorded among the successfully queried entries. ",
-          "All games with successful tag queries showed some matching post activity. "
-        ]);
+      ? "No posts were found for " + zeroGames.length + " game" + (zeroGames.length === 1 ? "" : "s") + ": " + zeroGames.map(row => row.gameName).join(", ") + ". "
+      : "Each game with a successful tag search had at least one post. ";
     const coverageNote = failedTags
-      ? choose([
-          failedTags + " tag quer" + (failedTags === 1 ? "y failed" : "ies failed") + "; figures for affected games may be incomplete or unavailable. ",
-          "Coverage is limited because " + failedTags + " configured tag quer" + (failedTags === 1 ? "y did not succeed" : "ies did not succeed") + ". ",
-          "Use caution when comparing games: " + failedTags + " tag quer" + (failedTags === 1 ? "y returned an error" : "ies returned errors") + ". "
-        ])
-      : choose([
-          "All " + successfulTags + " configured tag queries completed successfully. ",
-          "The scan completed all " + successfulTags + " configured tag queries without query errors. ",
-          "No configured tag queries failed in this run (" + successfulTags + " successful). "
-        ]);
-    const limitNote = partialTags ? "The scan reached its per-tag page limit for " + partialTags + " tag" + (partialTags === 1 ? "" : "s") + ", so newer-post coverage may be incomplete. " : "";
-    const analysisCaveat = choose([
-      "These are public-post and distinct-author-account metrics, not verified gameplay or a census of actual players. Posting about a game does not prove that the author played it, and one person can operate multiple accounts.",
-      "Counts reflect matching public posts and distinct posting accounts only. They do not confirm game sessions or real player numbers; authors may post without playing, and individuals may use more than one account.",
-      "This report measures tag-matched content, not confirmed gameplay. Author totals count accounts rather than verified people, so they should not be interpreted as actual player counts."
-    ]);
-    const intro = choose([
-      "This report summarizes public Steem posts associated with " + games.length + " games listed in the SGA directory. During the selected seven-day window, " + activeGames.length + " games showed matching post activity. " + "Use the table to compare tag-matched post volume, distinct author accounts, configured discovery tags, and developer profiles where known. Crypto or token rewards depend on each game's rules and are never guaranteed.",
-      "SGA scans configured game-related tags to provide a time-bounded view of Steem gaming content. This run covered " + games.length + " listed games and detected posts for " + activeGames.length + ". The table ranks entries by matching post count; Authors means distinct posting accounts, Dedicated Tags shows the tags queried, and Developer links to a Steem profile when a developer username is available. Any game rewards vary by project and are not assured.",
-      "The following snapshot compares tag-matched Steem content across " + games.length + " tracked games for the current reporting window. " + activeGames.length + " games had at least one matching post. Post totals are useful for comparing visible publishing activity, while author totals count accounts rather than verified players. Developer profiles are linked only when the directory contains a valid username; game-specific rewards are subject to change and are not guaranteed."
-    ]);
+      ? failedTags + " tag search" + (failedTags === 1 ? " failed" : "es failed") + ", so some figures may be incomplete. "
+      : "All " + successfulTags + " tag searches completed without errors. ";
+    const limitNote = partialTags ? "The page limit was reached for " + partialTags + " tag" + (partialTags === 1 ? "" : "s") + "; older posts may have been missed. " : "";
+    const analysisCaveat = "These figures count public posts and author accounts, not confirmed players. Posting about a game does not prove that someone played it, and one person may use more than one account.";
+    const intro = "This report covers " + games.length + " Steem games over the seven days ending " + utcStamp(windowEnd) + ". " +
+      activeGames.length + (activeGames.length === 1 ? " game had" : " games had") + " at least one post under its listed tags. " +
+      "The table compares post counts, authors, tags used to find each game's content, and developer profiles where available. " +
+      "Rewards, where offered, depend on each game's rules and are not guaranteed.";
     const styles = '<style>' +
       'body{font-family:Arial,Helvetica,sans-serif;color:#17263b;line-height:1.65;font-size:15px}' +
       'h1{font-size:25px;line-height:1.25;color:#102b4e;margin:0 0 16px}' +
@@ -237,10 +223,10 @@
       '</style>';
     return styles +
       '<h1>' + escapeHtml(reportTitle) + '</h1>' +
-      '<div class="sga-intro"><p>' + escapeHtml(intro) + '</p><p><strong>Reporting window (UTC):</strong> ' + escapeHtml(windowLabel) + '<br><strong>Generated:</strong> ' + escapeHtml(generatedAt) + '<br><strong>Query coverage:</strong> ' + escapeHtml(successfulTags + '/' + (successfulTags + failedTags) + ' tags successful') + '</p></div>' +
+      '<div class="sga-intro"><p>' + escapeHtml(normalizeReportText(intro)) + '</p><p><strong>Reporting window (UTC):</strong> ' + escapeHtml(windowLabel) + '<br><strong>Generated:</strong> ' + escapeHtml(generatedAt) + '<br><strong>Query coverage:</strong> ' + escapeHtml(successfulTags + '/' + (successfulTags + failedTags) + ' tags successful') + '</p></div>' +
       '<div class="sga-table-wrap"><table class="sga-table"><thead><tr><th>No.</th><th>Game</th><th>Posts</th><th>Authors</th><th>Dedicated Tags</th><th>Developer</th></tr></thead><tbody>' + tableRows + '</tbody></table></div>' +
       '<h2>Activity Analysis</h2>' +
-      '<div class="sga-analysis"><p>' + escapeHtml(analysisOne) + '</p><p>' + escapeHtml(analysisTwo + coverageNote + limitNote + analysisCaveat) + '</p></div>';
+      '<div class="sga-analysis"><p>' + escapeHtml(normalizeReportText(analysisOne)) + '</p><p>' + escapeHtml(normalizeReportText(analysisTwo + coverageNote + limitNote + analysisCaveat)) + '</p></div>';
   }
 
   function showPreview() {
