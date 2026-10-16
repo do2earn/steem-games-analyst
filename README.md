@@ -21,7 +21,7 @@ A post about a game is not, by itself, proof that the author played it. SGA will
 
 ## Project status
 
-**Initial automation scaffold committed.** The browser dashboard, public-tag collector, daily GitHub Actions workflow, and GitHub Pages deployment workflow are now in the repository. The first collection run and Pages deployment still need to succeed before the service can be considered operational.
+**Initial collector run succeeded.** The browser dashboard, public-tag collector, daily GitHub Actions workflow, and GitHub Pages deployment workflow are in the repository. The first report was generated successfully on 2026-10-16. Pages deployment is currently blocked because GitHub Pages has not yet been enabled in repository Settings.
 
 ## Planned outputs
 
