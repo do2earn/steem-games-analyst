@@ -1,15 +1,15 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-16T12:32:23Z",
+  "generated_at": "2026-10-16T12:35:15Z",
   "window": {
-    "start": "2026-10-09T12:32:23Z",
-    "end": "2026-10-16T12:32:23Z",
+    "start": "2026-10-09T12:35:15Z",
+    "end": "2026-10-16T12:35:15Z",
     "days": 7
   },
   "api_endpoint": "https://api.steemit.com",
   "method": "condenser_api.get_discussions_by_created",
   "coverage_note": "Counts reflect posts returned by the public API for configured tags within the reporting window. They are not a complete census of all Steem posts or verified gameplay/player counts. Per-tag page limits and API errors may reduce coverage.",
-  "game_count": 14,
+  "game_count": 15,
   "tags_scanned": [
     "cur8",
     "drugwars-fight",
@@ -19,6 +19,7 @@
     "steem-retrogames",
     "steem4poker",
     "steem4snake",
+    "steem8ball",
     "steembingo",
     "steemflags",
     "steemgame",
@@ -92,6 +93,14 @@
       "page_limit_reached": false,
       "status": "ok"
     },
+    "steem8ball": {
+      "post_count": 1,
+      "unique_authors": 1,
+      "pages_fetched": 1,
+      "reached_window_start": true,
+      "page_limit_reached": false,
+      "status": "ok"
+    },
     "steembingo": {
       "post_count": 0,
       "unique_authors": 0,
@@ -125,7 +134,7 @@
       "status": "ok"
     },
     "steemhop": {
-      "post_count": 65,
+      "post_count": 64,
       "unique_authors": 30,
       "pages_fetched": 1,
       "reached_window_start": true,
@@ -458,8 +467,8 @@
           ],
           "net_votes": 0,
           "children": 1,
-          "pending_payout_value": "2.289 SBD",
-          "active_votes_count": 51,
+          "pending_payout_value": "2.329 SBD",
+          "active_votes_count": 52,
           "matched_tags": [
             "steemgame",
             "steemhop",
@@ -1871,7 +1880,7 @@
           "title": "My Steem 8 Ball Match Against @BountyKing5 — A Tough Best-of-3 Battle",
           "created": "2026-10-11T10:23:39Z",
           "url": "https://steemit.com/@ahsansharif/my-steem-8-ball-match-against-bountyking5-a-tough-best-of-3-battle-wu613u",
-          "matched_tag": "steemhop",
+          "matched_tag": "steem8ball",
           "tags": [
             "steem8ball",
             "steemludo",
@@ -1884,6 +1893,7 @@
           "pending_payout_value": "3.565 SBD",
           "active_votes_count": 50,
           "matched_tags": [
+            "steem8ball",
             "steemhop",
             "steemludo"
           ]
@@ -2524,7 +2534,7 @@
         "steemhop"
       ],
       "game_url": "https://steemhop.org/",
-      "posts_found": 65,
+      "posts_found": 64,
       "unique_authors": 30,
       "authors": [
         "a-abrar",
@@ -2748,8 +2758,8 @@
           ],
           "net_votes": 0,
           "children": 1,
-          "pending_payout_value": "2.289 SBD",
-          "active_votes_count": 51,
+          "pending_payout_value": "2.329 SBD",
+          "active_votes_count": 52,
           "matched_tags": [
             "steemgame",
             "steemhop",
@@ -3655,7 +3665,7 @@
           "title": "My Steem 8 Ball Match Against @BountyKing5 — A Tough Best-of-3 Battle",
           "created": "2026-10-11T10:23:39Z",
           "url": "https://steemit.com/@ahsansharif/my-steem-8-ball-match-against-bountyking5-a-tough-best-of-3-battle-wu613u",
-          "matched_tag": "steemhop",
+          "matched_tag": "steem8ball",
           "tags": [
             "steem8ball",
             "steemludo",
@@ -3668,6 +3678,7 @@
           "pending_payout_value": "3.565 SBD",
           "active_votes_count": 50,
           "matched_tags": [
+            "steem8ball",
             "steemhop",
             "steemludo"
           ]
@@ -4114,27 +4125,6 @@
           "active_votes_count": 5,
           "matched_tags": [
             "steemgame",
-            "steemhop"
-          ]
-        },
-        {
-          "author": "fahimaislam",
-          "permlink": "when-the-spin-wheel-loves-you-but-the-traffic-hates-you-itla9v",
-          "title": "When the Spin Wheel Loves You, but the Traffic Hates You! ",
-          "created": "2026-10-09T12:34:45Z",
-          "url": "https://steemit.com/@fahimaislam/when-the-spin-wheel-loves-you-but-the-traffic-hates-you-itla9v",
-          "matched_tag": "steemhop",
-          "tags": [
-            "steemhop",
-            "gaming",
-            "playtoearn",
-            "spinwheel"
-          ],
-          "net_votes": 0,
-          "children": 1,
-          "pending_payout_value": "0.006 SBD",
-          "active_votes_count": 3,
-          "matched_tags": [
             "steemhop"
           ]
         }
@@ -8746,9 +8736,9 @@
             "dw"
           ],
           "net_votes": 0,
-          "children": 1,
-          "pending_payout_value": "0.018 SBD",
-          "active_votes_count": 2,
+          "children": 2,
+          "pending_payout_value": "0.169 SBD",
+          "active_votes_count": 9,
           "matched_tags": [
             "drugwars-fight"
           ]
@@ -10179,6 +10169,46 @@
           "active_votes_count": 1,
           "matched_tags": [
             "drugwars-fight"
+          ]
+        }
+      ],
+      "query_status": "ok"
+    },
+    {
+      "game_id": "steem-8-ball",
+      "game_name": "Steem 8 Ball",
+      "tags": [
+        "steem8ball"
+      ],
+      "game_url": "https://www.steemx.org/8ballpool",
+      "posts_found": 1,
+      "unique_authors": 1,
+      "authors": [
+        "ahsansharif"
+      ],
+      "posts": [
+        {
+          "author": "ahsansharif",
+          "permlink": "my-steem-8-ball-match-against-bountyking5-a-tough-best-of-3-battle-wu613u",
+          "title": "My Steem 8 Ball Match Against @BountyKing5 — A Tough Best-of-3 Battle",
+          "created": "2026-10-11T10:23:39Z",
+          "url": "https://steemit.com/@ahsansharif/my-steem-8-ball-match-against-bountyking5-a-tough-best-of-3-battle-wu613u",
+          "matched_tag": "steem8ball",
+          "tags": [
+            "steem8ball",
+            "steemludo",
+            "steemexclusive",
+            "steemhop",
+            "pakistan"
+          ],
+          "net_votes": 0,
+          "children": 2,
+          "pending_payout_value": "3.565 SBD",
+          "active_votes_count": 50,
+          "matched_tags": [
+            "steem8ball",
+            "steemhop",
+            "steemludo"
           ]
         }
       ],
