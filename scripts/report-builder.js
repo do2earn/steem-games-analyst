@@ -353,6 +353,8 @@
     setProgress(2, "Testing configured Steem API servers…");
     try {
       const apiSelection = await selectFastestApi();
+      $("selectedApiStatus").textContent = "Steem API selected: " + apiSelection.selected.endpoint + " · " + apiSelection.selected.latency + " ms · " + apiSelection.available + "/" + apiSelection.tested + " servers responsive.";
+      $("selectedApiStatus").className = "small ok";
       setProgress(3, "Selected fastest responsive API: " + apiSelection.selected.endpoint + " (" + apiSelection.selected.latency + " ms; " + apiSelection.available + "/" + apiSelection.tested + " available). Loading game tags…", "ok");
       const [gamesResponse, aliasesResponse] = await Promise.all([
         fetch("data/games.json", {cache: "no-store"}),
