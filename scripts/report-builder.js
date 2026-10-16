@@ -249,14 +249,20 @@
       const name = escapeHtml(game.game_name || game.game_id || "Unknown game");
       const gameUrl = typeof game.game_url === "string" && /^https:\/\//i.test(game.game_url) ? game.game_url : "";
       const linkedName = gameUrl ? '<a href="' + escapeHtml(gameUrl) + '">' + name + '</a>' : name;
-      const tagText = ownTags.map(tag => '<span class="sga-tag">#' + escapeHtml(tag) + '</span>').join(" ") || "—";
+      const tagUrl = tag => "https://www.steemx.org/created/" + encodeURIComponent(tag);
+      const tagText = ownTags.map(tag =>
+        '<a class="sga-tag" href="' + escapeHtml(tagUrl(tag)) + '" target="_blank" rel="noopener noreferrer">#' + escapeHtml(tag) + '</a>'
+      ).join(" ") || "—";
+      const linkedCountText = ownTags.length
+        ? '<a href="' + escapeHtml(tagUrl(ownTags[0])) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(countText) + '</a>'
+        : escapeHtml(countText);
       const developer = String(game.developer || "").trim().replace(/^@/, "");
       const developerText = /^[a-z0-9.-]{3,16}$/.test(developer)
-        ? '<a href="https://steemit.com/@' + encodeURIComponent(developer) + '">@' + escapeHtml(developer) + '</a>'
+        ? '<a href="https://www.steemx.org/@' + encodeURIComponent(developer) + '" target="_blank" rel="noopener noreferrer">@' + escapeHtml(developer) + '</a>'
         : "—";
       return { gameName: String(game.game_name || game.game_id || "Unknown game"), posts: posts.length, authors: authors.size,
         failed: queryStatus === "Failed", countText, authorText,
-        html: '<tr><td class="sga-no"></td><td class="sga-game">' + linkedName + '</td><td class="sga-number">' + countText + '</td><td class="sga-number">' + authorText + '</td><td>' + tagText + '</td><td>' + developerText + '</td></tr>' };
+        html: '<tr><td class="sga-no"></td><td class="sga-game">' + linkedName + '</td><td class="sga-number">' + linkedCountText + '</td><td class="sga-number">' + authorText + '</td><td>' + tagText + '</td><td>' + developerText + '</td></tr>' };
     }).sort((a, b) => { if (a.failed !== b.failed) return a.failed ? 1 : -1; return b.posts - a.posts || a.gameName.localeCompare(b.gameName); });
     rows.forEach((row, index) => { row.html = row.html.replace('<td class="sga-no"></td>', '<td class="sga-no">' + (index + 1) + '</td>'); });
     const tableRows = rows.map(row => row.html).join("\n");
