@@ -35,6 +35,12 @@ A post about a game is not, by itself, proof that the author played it. SGA will
 
 All repository content, code comments, configuration descriptions, logs, and generated reports are written in English. Reports should include the reporting window, collection time, methods, source links, limitations, and reproducible counts.
 
+## Access and authentication
+
+The initial web interface is intended for `@do2earn` only. It fixes the username and checks the supplied Posting Key against the account's public posting authority. The key is held in browser memory for the active page session and is not stored in local/session storage, repository files, or a SGA backend. The key is used only for verification; SGA does not sign or broadcast transactions.
+
+**Security limitation:** this is a client-side access gate, not strong server-enforced authorization. Because the initial app is static and its files are public, a technically skilled visitor could bypass the interface. Do not treat it as protection for confidential data or privileged server actions. Strong enforcement would require a trusted backend or another server-side authorization layer.
+
 ## Automation safety
 
 The first automated runs should be read-only. Publishing reports externally will remain a separate, explicitly reviewed step.
