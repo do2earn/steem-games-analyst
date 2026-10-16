@@ -89,7 +89,7 @@ main{width:min(850px,100%);margin:auto;padding:22px 15px 45px}.brand{display:fle
     if (!response.ok) throw new Error("Could not load data/games.json (HTTP " + response.status + ").");
     const data = await response.json();
     const games = Array.isArray(data.games) ? data.games : [];
-    const tags = new Set(games.map(game => game.tag).filter(Boolean));
+    const tags = new Set(games.flatMap(game => Array.isArray(game.tags) ? game.tags : []).filter(Boolean));
     document.getElementById("gameCount").textContent = String(games.length);
     document.getElementById("tagCount").textContent = String(tags.size);
     const list = document.getElementById("gameList");
@@ -97,7 +97,8 @@ main{width:min(850px,100%);margin:auto;padding:22px 15px 45px}.brand{display:fle
     for (const game of games) {
       const item = document.createElement("span");
       item.className = "game-tag";
-      item.textContent = (game.name || game.game_id || "Unknown game") + (game.tag ? " · #" + game.tag : "");
+      const gameTags = Array.isArray(game.tags) ? game.tags.filter(Boolean) : [];
+      item.textContent = (game.game_name || game.game_id || "Unknown game") + (gameTags.length ? " · " + gameTags.map(tag => "#" + tag).join(", ") : "");
       list.appendChild(item);
     }
   }
