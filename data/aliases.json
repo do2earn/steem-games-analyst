@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-10-16",
+  "description": "General discovery tags and known alternate names/tags. Add aliases only when there is evidence that they refer to the same game.",
+  "general_tags": [
+    {
+      "tag": "steemgame",
+      "purpose": "Broad discovery tag for Steem gaming-related content; not a game-specific tag.",
+      "source_url": "https://steemit.com/trending/steemgame",
+      "required_by_source_guidance": true,
+      "source_note": "The September 2026 Steem Games curation guidelines say this tag should appear among the first four tags."
+    }
+  ],
+  "aliases": []
+}
