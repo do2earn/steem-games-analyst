@@ -280,7 +280,7 @@
       '</style>';
     return styles +
       '<h1>' + escapeHtml(reportTitle) + '</h1>' +
-      '<div class="sga-intro"><p>' + escapeHtml(normalizeReportText(intro)) + '</p><p><strong>Reporting window (UTC):</strong> ' + escapeHtml(windowLabel) + '<br><strong>Generated:</strong> ' + escapeHtml(generatedAt) + '<br><strong>Query coverage:</strong> ' + escapeHtml(successfulTags + '/' + (successfulTags + failedTags) + ' tags successful') + '</p></div>' +
+      '<div class="sga-intro"><p>' + escapeHtml(normalizeReportText(intro)) + '</p></div>' +
       '<div class="sga-table-wrap"><table class="sga-table"><thead><tr><th>No.</th><th>Game</th><th>Posts</th><th>Authors</th><th>Dedicated Tags</th><th>Developer</th></tr></thead><tbody>' + tableRows + '</tbody></table></div>' +
       '<h2>Activity Analysis</h2>' +
       '<div class="sga-analysis"><p>' + escapeHtml(normalizeReportText(analysisOne)) + '</p><p>' + escapeHtml(normalizeReportText(analysisTwo + coverageNote + limitNote + analysisCaveat)) + '</p></div>';
