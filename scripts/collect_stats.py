@@ -124,6 +124,7 @@ def main() -> int:
                     all_posts[key] = post
                 all_posts[key]["matched_tags"] = sorted(set(all_posts[key].get("matched_tags", [])) | {tag})
         except Exception as exc:
+            print(f"Tag query failed for #{tag}: {exc}", file=sys.stderr)
             tag_stats[tag] = {"status": "error", "error": str(exc)}
             errors.append({"tag": tag, "error": str(exc)})
 
