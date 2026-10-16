@@ -110,10 +110,11 @@
         });
         if (!response.ok) throw new Error("HTTP " + response.status);
         const payload = await response.json();
-        if (payload.error || !payload.result || typeof payload.result !== "object") {
+        const headBlockNumber = Number(payload && payload.result && payload.result.head_block_number);
+        if (payload.error || !Number.isFinite(headBlockNumber)) {
           throw new Error(payload.error && payload.error.message ? payload.error.message : "Invalid RPC response");
         }
-        return {endpoint, latency: Math.round(performance.now() - started), ok: true};
+        return {endpoint, latency: Math.round(performance.now() - started), ok: true, headBlockNumber};
       } catch (error) {
         return {endpoint, latency: Math.round(performance.now() - started), ok: false,
           error: error && error.name === "AbortError" ? "Timeout" : (error && error.message ? error.message : "Request failed")};
