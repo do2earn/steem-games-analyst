@@ -29,7 +29,13 @@ A post about a game is not, by itself, proof that the author played it. SGA will
 - Activity data-source registry
 - Analytics framework
 - Weekly report specification
-- Automated collection and English-language reports\n\n## Running the collector\n\nThe workflow `SGA - Collect Steem Game Statistics` can run daily or be started manually from the GitHub Actions tab. It queries the configured dedicated tags in `data/games.json` and the general discovery tag in `data/aliases.json`/the game library, then commits a dated JSON snapshot and Markdown report. It is read-only against Steem and does not need a private key. API errors and page limits are recorded; an all-failed run does not create a misleading empty report.\n\nThe `Deploy SGA to GitHub Pages` workflow publishes the static dashboard. GitHub Pages must be enabled for the repository and the first deployment must finish successfully before the live URL is available. The dashboard reads its game directory and latest-report pointer from the published repository files.
+- Automated collection and English-language reports
+
+## Running the collector
+
+The workflow `SGA - Collect Steem Game Statistics` can run daily or be started manually from the GitHub Actions tab. It queries the configured dedicated tags in `data/games.json` and the general discovery tag in `data/aliases.json`/the game library, then commits a dated JSON snapshot and Markdown report. It is read-only against Steem and does not need a private key. API errors and page limits are recorded; an all-failed run does not create a misleading empty report.
+
+The `Deploy SGA to GitHub Pages` workflow publishes the static dashboard. Before the first deployment, open repository **Settings → Pages** and set **Build and deployment → Source** to **GitHub Actions**. The workflow token cannot create the Pages site in this repository until Pages has been enabled through Settings. After saving, rerun the Pages workflow from **Actions → Deploy SGA to GitHub Pages → Run workflow**. The expected project URL is `https://do2earn.github.io/steem-games-analyst/`; it becomes live only after a successful deployment. The dashboard reads its game directory and latest-report pointer from the published repository files.
 
 ## Language and publishing
 
