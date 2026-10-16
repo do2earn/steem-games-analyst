@@ -21,7 +21,7 @@ A post about a game is not, by itself, proof that the author played it. SGA will
 
 ## Project status
 
-**Phase 1 — Research and measurement design.** The initial game directory, data-source registry, and metric definitions are being established before automation is enabled.
+**Initial automation scaffold committed.** The browser dashboard, public-tag collector, daily GitHub Actions workflow, and GitHub Pages deployment workflow are now in the repository. The first collection run and Pages deployment still need to succeed before the service can be considered operational.
 
 ## Planned outputs
 
@@ -29,7 +29,7 @@ A post about a game is not, by itself, proof that the author played it. SGA will
 - Activity data-source registry
 - Analytics framework
 - Weekly report specification
-- Automated collection and English-language reports
+- Automated collection and English-language reports\n\n## Running the collector\n\nThe workflow `SGA - Collect Steem Game Statistics` can run daily or be started manually from the GitHub Actions tab. It queries the configured dedicated tags in `data/games.json` and the general discovery tag in `data/aliases.json`/the game library, then commits a dated JSON snapshot and Markdown report. It is read-only against Steem and does not need a private key. API errors and page limits are recorded; an all-failed run does not create a misleading empty report.\n\nThe `Deploy SGA to GitHub Pages` workflow publishes the static dashboard. GitHub Pages must be enabled for the repository and the first deployment must finish successfully before the live URL is available. The dashboard reads its game directory and latest-report pointer from the published repository files.
 
 ## Language and publishing
 
