@@ -339,8 +339,6 @@
       const since = period.start;
       const until = period.end;
       titleBox.value = selectedReportTitle(period);
-      tagsBox.value = Array.from(new Set(games.flatMap(game => (Array.isArray(game.tags) ? game.tags : []).map(tag => String(tag).trim().toLowerCase()).filter(Boolean))))
-        .sort().map(tag => "#" + tag).join(", ");
       const tagStats = {};
       const allPosts = new Map();
       const errors = [];
@@ -376,6 +374,14 @@
         }
         setProgress(next, "Scanned " + (index + 1) + "/" + allTags.length + " tags; latest: #" + tag + ".");
       }
+      const dedicatedTags = Array.from(new Set(games.flatMap(game => (Array.isArray(game.tags) ? game.tags : []).map(tag => String(tag).trim().toLowerCase()).filter(Boolean))));
+      tagsBox.value = dedicatedTags.sort((a, b) => {
+        const aStats = tagStats[a];
+        const bStats = tagStats[b];
+        const aCount = aStats && aStats.status === "ok" ? aStats.post_count : -1;
+        const bCount = bStats && bStats.status === "ok" ? bStats.post_count : -1;
+        return bCount - aCount || a.localeCompare(b);
+      }).map(tag => "#" + tag).join(", ");
       const successes = Object.values(tagStats).filter(item => item.status === "ok").length;
       if (!successes) throw new Error("All tag queries failed. No report was generated; check the API connection and try again.");
       setProgress(80, "Analyzing unique posts, authors, and last activity…");
@@ -403,6 +409,27 @@
     copyBtn.disabled = !editor.value.trim();
     previewBtn.disabled = !editor.value.trim();
   });
+  async function copyTextBox(box, label) {
+    const value = box.value;
+    if (!value.trim()) {
+      setProgress(progressBar.value, "There is no " + label + " to copy yet.", "warn");
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(value);
+      setProgress(progressBar.value, label + " copied to clipboard.", "ok");
+    } catch (_) {
+      box.focus();
+      box.select();
+      const copied = document.execCommand("copy");
+      setProgress(progressBar.value, copied ? label + " copied to clipboard." : "Select and copy the " + label.toLowerCase() + " manually.", copied ? "ok" : "warn");
+    }
+  }
+
+  $("copyTitleBtn").addEventListener("click", () => copyTextBox(titleBox, "Report title"));
+  $("copyEditorBtn").addEventListener("click", () => copyTextBox(editor, "Report HTML"));
+  $("copyTagsBtn").addEventListener("click", () => copyTextBox(tagsBox, "Game tags"));
+
   copyBtn.addEventListener("click", async () => {
     try {
       await navigator.clipboard.writeText(editor.value);
