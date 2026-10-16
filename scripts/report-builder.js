@@ -128,13 +128,9 @@
   }
 
   function buildReportHtml(games, tagStats, allPosts, windowStart, windowEnd, errors, tagsScanned) {
-    const uniquePosts = Array.from(allPosts.values()).sort((a, b) => b.created.localeCompare(a.created));
+    const uniquePosts = Array.from(allPosts.values());
     const generalTags = new Set(tagsScanned.general);
     const gameTags = new Set(games.flatMap(game => (game.tags || []).map(tag => String(tag).trim().toLowerCase())));
-    const candidates = uniquePosts.filter(post =>
-      post.matchedTags.some(tag => generalTags.has(tag)) &&
-      !post.matchedTags.some(tag => gameTags.has(tag))
-    );
     const rows = games.map(game => {
       const ownTags = (game.tags || []).map(tag => String(tag).trim().toLowerCase());
       const ownTagSet = new Set(ownTags);
@@ -144,44 +140,63 @@
       const errorCount = statuses.filter(value => value === "error").length;
       const queryStatus = errorCount === 0 ? "Complete" : (successCount > 0 ? "Partial" : "Failed");
       const authors = new Set(posts.map(post => post.author));
-      const last = posts.reduce((latest, post) => !latest || post.created > latest ? post.created : latest, "");
       const countPrefix = queryStatus === "Partial" ? "≥" : "";
       const countText = queryStatus === "Failed" ? "—" : countPrefix + posts.length;
       const authorText = queryStatus === "Failed" ? "—" : countPrefix + authors.size;
       const name = escapeHtml(game.game_name || game.game_id || "Unknown game");
       const gameUrl = typeof game.game_url === "string" && /^https:\/\//i.test(game.game_url) ? game.game_url : "";
       const linkedName = gameUrl ? '<a href="' + escapeHtml(gameUrl) + '">' + name + '</a>' : name;
-      const tagText = ownTags.map(tag => "#" + escapeHtml(tag)).join(", ") || "—";
-      const lastText = last ? escapeHtml(last.replace("T", " ").replace("Z", " UTC")) : "—";
-      return "<tr><td>" + linkedName + "</td><td>" + tagText + "</td><td>" + countText + "</td><td>" + authorText + "</td><td>" + lastText + "</td><td>" + queryStatus + "</td></tr>";
-    }).join("\n");
-    const tagRows = Object.keys(tagStats).sort().map(tag => {
-      const info = tagStats[tag];
-      return "<tr><td>#" + escapeHtml(tag) + "</td><td>" + (info.status === "ok" ? info.post_count : "—") + "</td><td>" + (info.status === "ok" ? info.unique_authors : "—") + "</td><td>" + (info.pages_fetched ?? "—") + "</td><td>" + escapeHtml(info.status === "ok" ? (info.page_limit_reached ? "Limit reached" : "OK") : "Error: " + info.error) + "</td></tr>";
-    }).join("\n");
-    const candidateRows = candidates.slice(0, 30).map(post =>
-      '<tr><td><a href="' + escapeHtml(post.url) + '">' + escapeHtml(post.title || post.author + "/" + post.permlink) + '</a></td><td>' +
-      escapeHtml(post.created.replace("T", " ").replace("Z", " UTC")) + "</td><td>" +
-      post.matchedTags.map(tag => "#" + escapeHtml(tag)).join(", ") + "</td></tr>"
-    ).join("\n");
-    const windowText = windowStart.toISOString().replace(".000Z", "Z") + " to " + windowEnd.toISOString().replace(".000Z", "Z");
-    const tagSuccesses = Object.values(tagStats).filter(item => item.status === "ok").length;
-    const totalTagCount = Object.keys(tagStats).length;
-    const coverage = "This report counts public API posts matching the configured tags. It is not a complete census of Steem gaming content and does not verify actual gameplay or real player counts. Tag-query page limits and API errors may reduce coverage.";
-    const errorSection = errors.length ? '<h2>API errors</h2><ul>' + errors.map(item => "<li><strong>#" + escapeHtml(item.tag) + ":</strong> " + escapeHtml(item.error) + "</li>").join("") + "</ul>" : "";
-    return '<h1>Steem Games Activity Report</h1>\n' +
-      '<p><strong>Generated:</strong> ' + escapeHtml(windowEnd.toISOString().replace(".000Z", "Z")) + '<br>' +
-      '<strong>Reporting window (UTC):</strong> ' + escapeHtml(windowText) + '<br>' +
-      '<strong>Games in directory:</strong> ' + games.length + '<br>' +
-      '<strong>Unique posts across scanned tags:</strong> ' + uniquePosts.length + '<br>' +
-      '<strong>Successful tag queries:</strong> ' + tagSuccesses + "/" + totalTagCount + '</p>\n' +
-      '<p><em>' + escapeHtml(coverage) + '</em></p>\n' +
-      '<h2>Game activity</h2>\n' +
-      '<table><thead><tr><th>Game</th><th>Dedicated tags</th><th>Posts</th><th>Unique authors</th><th>Last activity (UTC)</th><th>Query status</th></tr></thead><tbody>' + rows + '</tbody></table>\n' +
-      '<h2>Tag query results</h2><table><thead><tr><th>Tag</th><th>Posts</th><th>Unique authors</th><th>Pages</th><th>Status</th></tr></thead><tbody>' + tagRows + '</tbody></table>\n' +
-      '<h2>Discovery candidates</h2><p>Posts found via a general discovery tag that did not match a configured game-specific tag: <strong>' + candidates.length + '</strong>. Showing up to 30.</p>' +
-      (candidateRows ? '<table><thead><tr><th>Post</th><th>Published (UTC)</th><th>Matched tags</th></tr></thead><tbody>' + candidateRows + '</tbody></table>' : "<p>No discovery candidates were found in this window.</p>") +
-      errorSection + '<p><strong>Data source:</strong> public Steem API · <strong>Method:</strong> condenser_api.get_discussions_by_created</p>';
+      const tagText = ownTags.map(tag => '<span class="sga-tag">#' + escapeHtml(tag) + '</span>').join(" ") || "—";
+      return { gameName: String(game.game_name || game.game_id || "Unknown game"), posts: posts.length, authors: authors.size,
+        failed: queryStatus === "Failed", countText, authorText,
+        html: '<tr><td class="sga-no"></td><td class="sga-game">' + linkedName + '</td><td class="sga-number">' + countText + '</td><td class="sga-number">' + authorText + '</td><td>' + tagText + '</td></tr>' };
+    }).sort((a, b) => (b.failed ? -1 : b.posts) - (a.failed ? -1 : a.posts) || a.gameName.localeCompare(b.gameName));
+    rows.forEach((row, index) => { row.html = row.html.replace('<td class="sga-no"></td>', '<td class="sga-no">' + (index + 1) + '</td>'); });
+    const tableRows = rows.map(row => row.html).join("\n");
+    const monthName = windowEnd.toLocaleString("en-US", {month:"long", timeZone:"UTC"});
+    const monthStart = new Date(Date.UTC(windowEnd.getUTCFullYear(), windowEnd.getUTCMonth(), 1));
+    const weekNumber = Math.floor((windowEnd.getUTCDate() + monthStart.getUTCDay() - 1) / 7) + 1;
+    const reportTitle = "Steem Games Activity Report | " + monthName + " " + windowEnd.getUTCFullYear() + " - Week " + weekNumber;
+    const totalPosts = rows.reduce((sum, row) => sum + (row.failed ? 0 : row.posts), 0);
+    const totalAuthors = rows.reduce((sum, row) => sum + (row.failed ? 0 : row.authors), 0);
+    const activeGames = rows.filter(row => !row.failed && row.posts > 0);
+    const zeroGames = rows.filter(row => !row.failed && row.posts === 0);
+    const topGames = activeGames.slice().sort((a, b) => b.posts - a.posts);
+    const topThree = topGames.slice(0, 3);
+    const topShare = totalPosts ? Math.round(topThree.reduce((sum, row) => sum + row.posts, 0) / totalPosts * 100) : 0;
+    const leader = topGames[0];
+    const analysisOne = activeGames.length
+      ? "During this reporting period, " + activeGames.length + " of " + games.length + " tracked games recorded posts under their dedicated tags. " +
+        (leader ? leader.gameName + " led the table with " + leader.posts + " posts from " + leader.authors + " authors." : "No single game led activity.") +
+        (topThree.length > 1 ? " The three most active games accounted for " + topShare + "% of the posts counted in the game table." : "")
+      : "No posts were found under the configured dedicated game tags during this reporting period.";
+    const analysisTwo = zeroGames.length
+      ? zeroGames.length + " tracked game" + (zeroGames.length === 1 ? " had" : "s had") + " no matching posts in this scan (" + zeroGames.map(row => row.gameName).join(", ") + "). "
+      : "";
+    const analysisCaveat = "These figures measure public posts and distinct posting accounts matching configured tags, not verified gameplay or actual player counts. A person may publish without playing, and one person may use multiple accounts.";
+    const intro = "Steem gaming spans casual browser games, competitive experiences, strategy games, and community-driven projects. Depending on each game's rules and reward model, participants may earn blockchain tokens, receive STEEM or other crypto rewards, trade in-game assets, or earn through creating gameplay content and community posts. Rewards are not guaranteed and vary by game. This weekly snapshot compares visible content activity across the games tracked by SGA. Posts counts matching dedicated game tags, Authors counts distinct posting accounts in the period, and Dedicated Tags lists the tags used to identify each game's content.";
+    const styles = '<style>' +
+      'body{font-family:Arial,Helvetica,sans-serif;color:#17263b;line-height:1.65;font-size:15px}' +
+      'h1{font-size:25px;line-height:1.25;color:#102b4e;margin:0 0 16px}' +
+      'h2{font-size:19px;color:#173d63;margin:25px 0 10px}' +
+      '.sga-intro{padding:15px 17px;background:#f1f7ff;border:1px solid #d7e7fa;border-radius:14px}' +
+      '.sga-table-wrap{margin:16px 0;overflow-x:auto;border:1px solid #d5e1ef;border-radius:14px}' +
+      'table.sga-table{border-collapse:separate;border-spacing:0;width:100%;min-width:560px;font-size:14px;background:#fff}' +
+      '.sga-table th{background:#173d63;color:#fff;padding:12px 10px;text-align:left;font-weight:700}' +
+      '.sga-table th:first-child{border-top-left-radius:12px}.sga-table th:last-child{border-top-right-radius:12px}' +
+      '.sga-table td{padding:11px 10px;border-bottom:1px solid #e4ebf3;vertical-align:top}' +
+      '.sga-table tbody tr:nth-child(even){background:#f5f9fe}.sga-table tbody tr:last-child td{border-bottom:0}' +
+      '.sga-no{width:42px;text-align:center;color:#667b92;font-weight:700}.sga-game{font-weight:700;min-width:120px}.sga-number{font-variant-numeric:tabular-nums;font-weight:700;color:#176b54;text-align:center}' +
+      '.sga-tag{display:inline-block;margin:2px;padding:3px 7px;border-radius:7px;background:#e8f2ff;color:#20568c;font-size:12px;white-space:nowrap}' +
+      '.sga-analysis{padding:14px 16px;border-left:4px solid #3c9b7a;background:#f4fbf8;border-radius:4px 12px 12px 4px;margin:12px 0}' +
+      'a{color:#145fa8;text-decoration:none}a:hover{text-decoration:underline}' +
+      '</style>';
+    return styles +
+      '<h1>' + escapeHtml(reportTitle) + '</h1>' +
+      '<div class="sga-intro"><p>' + escapeHtml(intro) + '</p></div>' +
+      '<div class="sga-table-wrap"><table class="sga-table"><thead><tr><th>No.</th><th>Game</th><th>Posts</th><th>Authors</th><th>Dedicated Tags</th></tr></thead><tbody>' + tableRows + '</tbody></table></div>' +
+      '<h2>Activity Analysis</h2>' +
+      '<div class="sga-analysis"><p>' + escapeHtml(analysisOne) + '</p><p>' + escapeHtml(analysisTwo + analysisCaveat) + '</p></div>';
   }
 
   function showPreview() {
