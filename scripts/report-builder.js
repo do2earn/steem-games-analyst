@@ -1,6 +1,6 @@
 (() => {
   "use strict";
-  const API_URL = "https://api.steemit.com";
+  let API_URL = "https://api.steemit.com";
   const PAGE_SIZE = 100;
   const MAX_PAGES_PER_TAG = 15;
   const $ = id => document.getElementById(id);
@@ -84,6 +84,49 @@
     progressLabel.textContent = label;
     reportStatus.className = "status " + className;
     reportStatus.textContent = label;
+  }
+
+  async function selectFastestApi() {
+    const response = await fetch("data/steem-apis.json", {cache: "no-store"});
+    if (!response.ok) throw new Error("Could not load data/steem-apis.json (HTTP " + response.status + ").");
+    const config = await response.json();
+    const endpoints = Array.isArray(config.endpoints)
+      ? Array.from(new Set(config.endpoints.map(value => String(value).trim().replace(/\\/+$/, "")).filter(value => /^https:\\/\\//i.test(value))))
+      : [];
+    if (!endpoints.length) throw new Error("No valid Steem API endpoints are configured in data/steem-apis.json.");
+    const method = String(config.probe_method || "condenser_api.get_dynamic_global_properties");
+    const timeoutMs = Math.max(1000, Math.min(15000, Number(config.timeout_ms) || 7000));
+    const results = await Promise.all(endpoints.map(async endpoint => {
+      const controller = new AbortController();
+      const started = performance.now();
+      const timer = setTimeout(() => controller.abort(), timeoutMs);
+      try {
+        const response = await fetch(endpoint, {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({jsonrpc: "2.0", method, params: [], id: 1}),
+          signal: controller.signal,
+          cache: "no-store"
+        });
+        if (!response.ok) throw new Error("HTTP " + response.status);
+        const payload = await response.json();
+        if (payload.error || !payload.result || typeof payload.result !== "object") {
+          throw new Error(payload.error && payload.error.message ? payload.error.message : "Invalid RPC response");
+        }
+        return {endpoint, latency: Math.round(performance.now() - started), ok: true};
+      } catch (error) {
+        return {endpoint, latency: Math.round(performance.now() - started), ok: false,
+          error: error && error.name === "AbortError" ? "Timeout" : (error && error.message ? error.message : "Request failed")};
+      } finally {
+        clearTimeout(timer);
+      }
+    }));
+    const available = results.filter(item => item.ok).sort((a, b) => a.latency - b.latency);
+    if (!available.length) {
+      throw new Error("All " + endpoints.length + " configured Steem API endpoints failed the connectivity test. Check the connection and try again.");
+    }
+    API_URL = available[0].endpoint;
+    return {selected: available[0], tested: results.length, available: available.length};
   }
 
   async function rpc(method, params) {
@@ -307,8 +350,10 @@
     progressWrap.hidden = false;
     progressBar.value = 0;
     progressPercent.textContent = "0%";
-    setProgress(2, "Loading game tags for the selected reporting period…");
+    setProgress(2, "Testing configured Steem API servers…");
     try {
+      const apiSelection = await selectFastestApi();
+      setProgress(3, "Selected fastest responsive API: " + apiSelection.selected.endpoint + " (" + apiSelection.selected.latency + " ms; " + apiSelection.available + "/" + apiSelection.tested + " available). Loading game tags…", "ok");
       const [gamesResponse, aliasesResponse] = await Promise.all([
         fetch("data/games.json", {cache: "no-store"}),
         fetch("data/aliases.json", {cache: "no-store"})
