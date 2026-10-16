@@ -50,7 +50,7 @@ main{width:min(850px,100%);margin:auto;padding:22px 15px 45px}.brand{display:fle
 
 <section class="card" id="dashboard" hidden>
 <h2>Welcome, @do2earn <span class="badge">AUTHORIZED SESSION</span></h2>
-<p class="hint">The initial game directory is loaded from the repository's JSON library. Automated statistics collection is not enabled yet.</p>
+<p class="hint">The game directory and latest automated activity report are loaded from the repository. Statistics are collected daily.</p>
 <div class="stats">
 <div class="stat"><strong id="gameCount">—</strong><span>Games in directory</span></div>
 <div class="stat"><strong id="tagCount">—</strong><span>Dedicated game tags</span></div>
@@ -58,7 +58,7 @@ main{width:min(850px,100%);margin:auto;padding:22px 15px 45px}.brand{display:fle
 </div>
 <h2 style="margin-top:20px">Game directory</h2>
 <div class="game-list" id="gameList"></div>
-<h2 style="margin-top:22px">Latest activity report</h2><p id="latestReport" class="hint">No automated report has been published yet. Run the SGA collection workflow to create the first report.</p><div class="status ok" id="dashboardStatus" role="status" aria-live="polite">Login verified. No blockchain transactions will be made.</div>
+<h2 style="margin-top:22px">Latest activity report</h2><p id="latestReport" class="hint">Loading the latest report…</p><div id="reportStats" class="stats" hidden><div class="stat"><strong id="reportPostCount">—</strong><span>Posts tagged #steemgame (7 days)</span></div><div class="stat"><strong id="reportAuthorCount">—</strong><span>Unique authors in #steemgame</span></div><div class="stat"><strong id="reportDiscoveryCount">—</strong><span>Discovery candidates</span></div></div><p id="reportCoverage" class="small"></p><div class="status ok" id="dashboardStatus" role="status" aria-live="polite">Login verified. No blockchain transactions will be made.</div>
 </section>
 <p class="footer">Do2Earn · Steem Games Analyst · Access interface reserved for @do2earn</p>
 </main>
@@ -118,6 +118,49 @@ main{width:min(850px,100%);margin:auto;padding:22px 15px 45px}.brand{display:fle
       const gameTags = Array.isArray(game.tags) ? game.tags.filter(Boolean) : [];
       item.textContent = (game.game_name || game.game_id || "Unknown game") + (gameTags.length ? " · " + gameTags.map(tag => "#" + tag).join(", ") : "");
       list.appendChild(item);
+    }
+
+    const reportElement = document.getElementById("latestReport");
+    try {
+      const latestResponse = await fetch("reports/latest.json", {cache: "no-store"});
+      if (!latestResponse.ok) throw new Error("Latest report metadata is unavailable (HTTP " + latestResponse.status + ").");
+      const latest = await latestResponse.json();
+      if (!latest.date || !latest.report) throw new Error("Latest report metadata is incomplete.");
+      reportElement.replaceChildren();
+      const dateLabel = document.createElement("strong");
+      dateLabel.textContent = "Report date: " + latest.date + " · ";
+      const reportLink = document.createElement("a");
+      reportLink.className = "report-link";
+      reportLink.href = "reports/" + encodeURIComponent(latest.report);
+      reportLink.target = "_blank";
+      reportLink.rel = "noopener noreferrer";
+      reportLink.textContent = "Open full activity report";
+      reportElement.append(dateLabel, reportLink);
+
+      const snapshotResponse = await fetch("data/snapshots/" + encodeURIComponent(latest.date) + ".json", {cache: "no-store"});
+      if (!snapshotResponse.ok) throw new Error("The report snapshot could not be loaded (HTTP " + snapshotResponse.status + ").");
+      const snapshot = await snapshotResponse.json();
+      const generalStats = snapshot.tag_stats && snapshot.tag_stats.steemgame;
+      if (generalStats) {
+        document.getElementById("reportPostCount").textContent = String(generalStats.post_count ?? "—");
+        document.getElementById("reportAuthorCount").textContent = String(generalStats.unique_authors ?? "—");
+        document.getElementById("reportDiscoveryCount").textContent = String(Array.isArray(snapshot.discovery_candidates) ? snapshot.discovery_candidates.length : 0);
+        document.getElementById("reportStats").hidden = false;
+      }
+      const coverage = document.getElementById("reportCoverage");
+      const start = snapshot.window && snapshot.window.start ? snapshot.window.start.slice(0, 10) : "";
+      const end = snapshot.window && snapshot.window.end ? snapshot.window.end.slice(0, 10) : latest.date;
+      coverage.textContent = "Reporting window: " + (start ? start + " to " : "") + end + ". Counts are tag-based and do not represent verified gameplay or unique real players.";
+      const snapshotLink = document.createElement("a");
+      snapshotLink.className = "report-link";
+      snapshotLink.href = "data/snapshots/" + encodeURIComponent(latest.date) + ".json";
+      snapshotLink.target = "_blank";
+      snapshotLink.rel = "noopener noreferrer";
+      snapshotLink.textContent = "Open raw JSON data";
+      coverage.append(document.createTextNode(" "), snapshotLink);
+    } catch (error) {
+      reportElement.textContent = error && error.message ? error.message : "The latest activity report could not be loaded.";
+      reportElement.className = "hint error";
     }
   }
 
