@@ -267,7 +267,6 @@
     rows.forEach((row, index) => { row.html = row.html.replace('<td class="sga-no"></td>', '<td class="sga-no">' + (index + 1) + '</td>'); });
     const tableRows = rows.map(row => row.html).join("\n");
     const monthName = windowStart.toLocaleString("en-US", {month:"long", timeZone:"UTC"});
-    const reportTitle = "Steem Games Activity Report | " + monthName + " " + windowStart.getUTCFullYear() + " - Week " + selectedWeek;
     const totalPosts = rows.reduce((sum, row) => sum + (row.failed ? 0 : row.posts), 0);
     const totalAuthors = rows.reduce((sum, row) => sum + (row.failed ? 0 : row.authors), 0);
     const activeGames = rows.filter(row => !row.failed && row.posts > 0);
@@ -329,7 +328,6 @@
       'a{color:#145fa8;text-decoration:none}a:hover{text-decoration:underline}' +
       '</style>';
     return styles +
-      '<h1>' + escapeHtml(reportTitle) + '</h1>' +
       '<div class="sga-intro"><p>' + escapeHtml(normalizeReportText(intro)) + '</p></div>' +
       '<div class="sga-table-wrap"><table class="sga-table"><thead><tr><th>No.</th><th>Game</th><th>Posts</th><th>Authors</th><th>Dedicated Tags</th><th>Developer</th></tr></thead><tbody>' + tableRows + '</tbody></table></div>' +
       '<h2>Activity Analysis</h2>' +
