@@ -41,7 +41,7 @@ def fetch_tag_posts(tag: str, since: datetime, until: datetime) -> tuple[list[di
         if start_author and start_permlink:
             query["start_author"] = start_author
             query["start_permlink"] = start_permlink
-        posts = rpc("condenser_api.get_discussions_by_created", [query, PAGE_SIZE])
+        posts = rpc("condenser_api.get_discussions_by_created", [query])
         pages += 1
         if not isinstance(posts, list) or not posts:
             reached_window_start = True
