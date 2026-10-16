@@ -169,16 +169,56 @@
     const topThree = topGames.slice(0, 3);
     const topShare = totalPosts ? Math.round(topThree.reduce((sum, row) => sum + row.posts, 0) / totalPosts * 100) : 0;
     const leader = topGames[0];
+    const choose = options => options[Math.floor(Math.random() * options.length)];
+    const windowLabel = utcStamp(windowStart) + " to " + utcStamp(windowEnd);
+    const generatedAt = utcStamp(new Date());
+    const successfulTags = Object.values(tagStats).filter(item => item.status === "ok").length;
+    const failedTags = Object.values(tagStats).filter(item => item.status === "error").length;
+    const partialTags = Object.values(tagStats).filter(item => item.status === "ok" && item.page_limit_reached).length;
     const analysisOne = activeGames.length
-      ? "During this reporting period, " + activeGames.length + " of " + games.length + " tracked games recorded posts under their dedicated tags. " +
-        (leader ? leader.gameName + " led the table with " + leader.posts + " posts from " + leader.authors + " authors." : "No single game led activity.") +
-        (topThree.length > 1 ? " The three most active games accounted for " + topShare + "% of the posts counted in the game table." : "")
-      : "No posts were found under the configured dedicated game tags during this reporting period.";
+      ? choose([
+          "Across the " + games.length + " games monitored, " + activeGames.length + " recorded at least one matching post. " + (leader ? leader.gameName + " ranked first with " + leader.posts + " posts from " + leader.authors + " distinct author accounts." : "No leading game could be identified.") + (topThree.length > 1 ? " The top three entries contributed " + topShare + "% of all game-table post counts." : ""),
+          "The scan found activity for " + activeGames.length + " out of " + games.length + " tracked games. " + (leader ? "The highest post count belonged to " + leader.gameName + " (" + leader.posts + " posts; " + leader.authors + " authors)." : "No game ranked above the others.") + (topThree.length > 1 ? " The three leading entries represented " + topShare + "% of the summed game-table counts." : ""),
+          "Dedicated-tag activity appeared for " + activeGames.length + " tracked games during this window. " + (leader ? leader.gameName + " was the most frequently posted-about game, with " + leader.posts + " posts and " + leader.authors + " authors." : "No clear activity leader emerged.") + (topThree.length > 1 ? " Combined, the three most active entries made up " + topShare + "% of the table's post counts." : "")
+        ])
+      : choose([
+          "The scan did not find matching posts for any tracked game under its configured dedicated tags.",
+          "No tracked game returned a matching post in the configured-tag scan for this reporting window.",
+          "No dedicated-tag activity was detected for the games in this directory during the selected period."
+        ]);
     const analysisTwo = zeroGames.length
-      ? zeroGames.length + " tracked game" + (zeroGames.length === 1 ? " had" : "s had") + " no matching posts in this scan (" + zeroGames.map(row => row.gameName).join(", ") + "). "
-      : "";
-    const analysisCaveat = "These figures measure public posts and distinct posting accounts matching configured tags, not verified gameplay or actual player counts. A person may publish without playing, and one person may use multiple accounts.";
-    const intro = "Steem gaming spans casual browser games, competitive experiences, strategy games, and community-driven projects. Depending on each game's rules and reward model, participants may earn blockchain tokens, receive STEEM or other crypto rewards, trade in-game assets, or earn through creating gameplay content and community posts. Rewards are not guaranteed and vary by game. In this reporting period, SGA tracked " + games.length + " games and found tag-matched posts for " + activeGames.length + " of them. The table ranks games by post volume; Posts counts matching posts, Authors counts distinct posting accounts in the period, and Dedicated Tags lists the tags used to identify each game's content, and Developer links to the listed developer's Steem profile when known.";
+      ? choose([
+          zeroGames.length + " game" + (zeroGames.length === 1 ? " had" : "s had") + " no matching posts in this scan: " + zeroGames.map(row => row.gameName).join(", ") + ". ",
+          "No matching posts were found for " + zeroGames.length + " tracked game" + (zeroGames.length === 1 ? "" : "s") + ": " + zeroGames.map(row => row.gameName).join(", ") + ". ",
+          "The zero-post entries for this period are " + zeroGames.map(row => row.gameName).join(", ") + " (" + zeroGames.length + " total). "
+        ])
+      : choose([
+          "Every successfully queried game had at least one matching post. ",
+          "No zero-post games were recorded among the successfully queried entries. ",
+          "All games with successful tag queries showed some matching post activity. "
+        ]);
+    const coverageNote = failedTags
+      ? choose([
+          failedTags + " tag quer" + (failedTags === 1 ? "y failed" : "ies failed") + "; figures for affected games may be incomplete or unavailable. ",
+          "Coverage is limited because " + failedTags + " configured tag quer" + (failedTags === 1 ? "y did not succeed" : "ies did not succeed") + ". ",
+          "Use caution when comparing games: " + failedTags + " tag quer" + (failedTags === 1 ? "y returned an error" : "ies returned errors") + ". "
+        ])
+      : choose([
+          "All " + successfulTags + " configured tag queries completed successfully. ",
+          "The scan completed all " + successfulTags + " configured tag queries without query errors. ",
+          "No configured tag queries failed in this run (" + successfulTags + " successful). "
+        ]);
+    const limitNote = partialTags ? "The scan reached its per-tag page limit for " + partialTags + " tag" + (partialTags === 1 ? "" : "s") + ", so newer-post coverage may be incomplete. " : "";
+    const analysisCaveat = choose([
+      "These are public-post and distinct-author-account metrics, not verified gameplay or a census of actual players. Posting about a game does not prove that the author played it, and one person can operate multiple accounts.",
+      "Counts reflect matching public posts and distinct posting accounts only. They do not confirm game sessions or real player numbers; authors may post without playing, and individuals may use more than one account.",
+      "This report measures tag-matched content, not confirmed gameplay. Author totals count accounts rather than verified people, so they should not be interpreted as actual player counts."
+    ]);
+    const intro = choose([
+      "This report summarizes public Steem posts associated with " + games.length + " games listed in the SGA directory. During the selected seven-day window, " + activeGames.length + " games showed matching post activity. " + "Use the table to compare tag-matched post volume, distinct author accounts, configured discovery tags, and developer profiles where known. Crypto or token rewards depend on each game's rules and are never guaranteed.",
+      "SGA scans configured game-related tags to provide a time-bounded view of Steem gaming content. This run covered " + games.length + " listed games and detected posts for " + activeGames.length + ". The table ranks entries by matching post count; Authors means distinct posting accounts, Dedicated Tags shows the tags queried, and Developer links to a Steem profile when a developer username is available. Any game rewards vary by project and are not assured.",
+      "The following snapshot compares tag-matched Steem content across " + games.length + " tracked games for the current reporting window. " + activeGames.length + " games had at least one matching post. Post totals are useful for comparing visible publishing activity, while author totals count accounts rather than verified players. Developer profiles are linked only when the directory contains a valid username; game-specific rewards are subject to change and are not guaranteed."
+    ]);
     const styles = '<style>' +
       'body{font-family:Arial,Helvetica,sans-serif;color:#17263b;line-height:1.65;font-size:15px}' +
       'h1{font-size:25px;line-height:1.25;color:#102b4e;margin:0 0 16px}' +
@@ -197,10 +237,10 @@
       '</style>';
     return styles +
       '<h1>' + escapeHtml(reportTitle) + '</h1>' +
-      '<div class="sga-intro"><p>' + escapeHtml(intro) + '</p></div>' +
+      '<div class="sga-intro"><p>' + escapeHtml(intro) + '</p><p><strong>Reporting window (UTC):</strong> ' + escapeHtml(windowLabel) + '<br><strong>Generated:</strong> ' + escapeHtml(generatedAt) + '<br><strong>Query coverage:</strong> ' + escapeHtml(successfulTags + '/' + (successfulTags + failedTags) + ' tags successful') + '</p></div>' +
       '<div class="sga-table-wrap"><table class="sga-table"><thead><tr><th>No.</th><th>Game</th><th>Posts</th><th>Authors</th><th>Dedicated Tags</th><th>Developer</th></tr></thead><tbody>' + tableRows + '</tbody></table></div>' +
       '<h2>Activity Analysis</h2>' +
-      '<div class="sga-analysis"><p>' + escapeHtml(analysisOne) + '</p><p>' + escapeHtml(analysisTwo + analysisCaveat) + '</p></div>';
+      '<div class="sga-analysis"><p>' + escapeHtml(analysisOne) + '</p><p>' + escapeHtml(analysisTwo + coverageNote + limitNote + analysisCaveat) + '</p></div>';
   }
 
   function showPreview() {
