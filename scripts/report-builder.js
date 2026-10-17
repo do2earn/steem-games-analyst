@@ -336,26 +336,28 @@
     return styles +
       '<div class="sga-intro"><p>' + escapeHtml(normalizeReportText(intro)) + '</p></div>' +
       '<div class="sga-table-wrap"><table class="sga-table"><thead><tr><th>No.</th><th>Game</th><th>Posts</th><th>Authors</th><th>Dedicated Tags</th><th>Developer</th></tr></thead><tbody>' + tableRows + '</tbody></table></div>' +
-      '<section class="sga-ad-card" aria-label="Steem Flags advertisement">' +
-        '<div class="sga-ad-image"><a href="https://steemflags.do2earn.dev" target="_blank" rel="noopener noreferrer"><img src="https://cdn.steemitimages.com/DQmZyJR1a1HcrkLBgCRXnuPJuyRfAxHBRyaSm7ZYR7XomWa/steemflags_intro.png" alt="Steem Flags flag quiz game preview" loading="lazy"></a></div>' +
-        '<div class="sga-ad-heading">🏳️ Steem Flags</div>' +
-        '<div class="sga-ad-tagline">Guess the Flags. Play. Earn D2E.</div>' +
-        '<div class="sga-ad-trust">Free to play · Built on the Steem blockchain · By <a href="https://do2earn.dev" target="_blank" rel="noopener noreferrer">Do2Earn</a></div>' +
-        '<a class="sga-ad-cta" href="https://steemflags.do2earn.dev" target="_blank" rel="noopener noreferrer">▶ PLAY FREE NOW</a>' +
-        '<p><strong>Test your knowledge of the world\'s flags, challenge yourself, and share your gameplay experience with the Steem community.</strong></p>' +
-        '<hr><h3>💰 D2E to STEEM</h3>' +
-        '<div class="sga-ad-rate">1,000 D2E = 1 STEEM</div>' +
-        '<p>D2E is an off-chain in-game token earned through activities such as playing the flag quiz.</p>' +
-        '<ol class="sga-ad-steps">' +
-          '<li><strong>Play Steem Flags</strong> and earn D2E.</li>' +
-          '<li><strong>Get more ⚡Energy</strong> to play more. Free energy recharges daily; extra energy can be purchased in-game.</li>' +
-          '<li><strong>Reach 10,000 D2E</strong> to meet the minimum swap amount.</li>' +
-          '<li><strong>Swap 10,000 D2E for 10 STEEM</strong> in your internal wallet.</li>' +
-          '<li><strong>Withdraw your STEEM</strong> to an external wallet, subject to the game\'s withdrawal rules and weekly limit.</li>' +
+      '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="width:100%;max-width:100%;border:2px solid #168bff;border-radius:12px;background-color:#071a36;border-collapse:separate;border-spacing:0;margin:14px 0;color:#f4f8ff;"><tr><td style="padding:12px;background-color:#071a36;color:#f4f8ff;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;overflow-wrap:anywhere;">' +
+        '<p style="text-align:center;margin:0 0 8px;"><a href="https://steemflags.do2earn.dev" target="_blank" rel="noopener noreferrer"><img src="https://cdn.steemitimages.com/DQmZyJR1a1HcrkLBgCRXnuPJuyRfAxHBRyaSm7ZYR7XomWa/steemflags_intro.png" alt="Steem Flags flag quiz game preview" width="680" style="display:block;width:100%;max-width:680px;height:auto;margin:0 auto;border:1px solid #4b9cff;border-radius:7px;"></a></p>' +
+        '<h2 style="color:#ffffff;text-align:center;font-size:23px;line-height:1.25;margin:6px 0;">🏳️ Steem Flags</h2>' +
+        '<p style="color:#ffffff;text-align:center;font-size:16px;font-weight:bold;margin:4px 0 7px;">Guess the Flags. Play. Earn D2E.</p>' +
+        '<p style="color:#c7dcf5;text-align:center;font-size:12px;margin:5px 0 10px;">Free to play · Built on the Steem blockchain · By <a href="https://do2earn.dev" target="_blank" rel="noopener noreferrer" style="color:#8bd4ff;font-weight:bold;">Do2Earn</a></p>' +
+        '<p style="text-align:center;margin:8px 0 12px;"><a href="https://steemflags.do2earn.dev" target="_blank" rel="noopener noreferrer" style="display:inline-block;background-color:#168bff;color:#ffffff;text-decoration:none;font-weight:bold;font-size:17px;padding:9px 14px;border-radius:8px;">▶ PLAY FREE NOW</a></p>' +
+        '<p style="color:#edf5ff;margin:8px 0;"><strong>Test your knowledge of the world\'s flags, challenge yourself, and share your gameplay experience with the Steem community.</strong></p>' +
+        '<hr style="border:0;border-top:1px solid #5d8dbd;margin:10px 0;">' +
+        '<h3 style="color:#ffffff;text-align:center;font-size:17px;margin:8px 0;">💰 D2E to STEEM</h3>' +
+        '<p style="border:2px solid #000000;background-color:#39ff14;color:#071a09;padding:9px 6px;font-size:21px;font-weight:bold;text-align:center;border-radius:8px;margin:8px 0;">1,000 D2E = 1 STEEM</p>' +
+        '<p style="color:#edf5ff;margin:7px 0;">D2E is an off-chain in-game token earned through activities such as playing the flag quiz.</p>' +
+        '<ol style="color:#edf5ff;padding-left:21px;margin:7px 0;">' +
+          '<li style="color:#edf5ff;margin:5px 0;"><strong>Play Steem Flags</strong> and earn D2E.</li>' +
+          '<li style="color:#edf5ff;margin:5px 0;"><strong>Get more ⚡Energy</strong> to play more. Free energy recharges daily; extra energy can be purchased in-game.</li>' +
+          '<li style="color:#edf5ff;margin:5px 0;"><strong>Reach 10,000 D2E</strong> to meet the minimum swap amount.</li>' +
+          '<li style="color:#edf5ff;margin:5px 0;"><strong>Swap 10,000 D2E for 10 STEEM</strong> in your internal wallet.</li>' +
+          '<li style="color:#edf5ff;margin:5px 0;"><strong>Withdraw your STEEM</strong> to an external wallet, subject to the game\'s withdrawal rules and weekly limit.</li>' +
         '</ol>' +
-        '<p class="sga-ad-trust">Rewards and withdrawals are subject to the game\'s rules; earnings are not guaranteed.</p>' +
-        '<hr><div class="sga-ad-secondary">📘 <strong><a href="https://steemflags.do2earn.dev/earnmoresteem.html" target="_blank" rel="noopener noreferrer">Learn how to earn more STEEM</a></strong></div>' +
-      '</section>' +
+        '<p style="color:#c7dcf5;text-align:center;font-size:12px;margin:8px 0;">Rewards and withdrawals are subject to the game\'s rules; earnings are not guaranteed.</p>' +
+        '<hr style="border:0;border-top:1px solid #5d8dbd;margin:10px 0;">' +
+        '<p style="text-align:center;font-size:14px;margin:7px 0;">📘 <strong><a href="https://steemflags.do2earn.dev/earnmoresteem.html" target="_blank" rel="noopener noreferrer" style="color:#8bd4ff;font-weight:bold;">Learn how to earn more STEEM</a></strong></p>' +
+        '</td></tr></table>' +
       '<h2>Activity Analysis</h2>' +
       '<div class="sga-analysis"><p>' + escapeHtml(normalizeReportText(analysisOne)) + '</p><p>' + escapeHtml(normalizeReportText(analysisTwo + coverageNote + limitNote + analysisCaveat)) + '</p></div>';
   }
