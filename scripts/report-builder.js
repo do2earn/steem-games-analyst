@@ -325,11 +325,35 @@
       '.sga-no{width:42px;text-align:center;color:#667b92;font-weight:700}.sga-game{font-weight:700;min-width:120px}.sga-number{font-variant-numeric:tabular-nums;font-weight:700;color:#176b54;text-align:center}' +
       '.sga-tag{display:inline-block;margin:2px;padding:3px 7px;border-radius:7px;background:#e8f2ff;color:#20568c;font-size:12px;white-space:nowrap}' +
       '.sga-analysis{padding:14px 16px;border-left:4px solid #3c9b7a;background:#f4fbf8;border-radius:4px 12px 12px 4px;margin:12px 0}' +
+      '.sga-ad-card{margin:28px 0;padding:clamp(16px,3vw,30px);border:2px solid #168bff;border-radius:20px;background:linear-gradient(145deg,#071a36 0%,#102e59 58%,#07162c 100%);color:#f4f8ff;box-shadow:0 10px 28px rgba(10,42,84,.22);overflow:hidden}' +
+      '.sga-ad-card h2,.sga-ad-card h3{color:#fff;text-align:center;margin:16px 0 10px}.sga-ad-card p,.sga-ad-card li{color:#edf5ff}.sga-ad-card a{color:#8bd4ff;font-weight:700}' +
+      '.sga-ad-image{text-align:center;margin:0 auto 18px}.sga-ad-image img{display:block;width:100%;max-width:760px;height:auto;margin:0 auto;border-radius:12px;border:1px solid #4b9cff}' +
+      '.sga-ad-heading{text-align:center;font-size:25px;font-weight:800;margin:8px 0}.sga-ad-tagline{text-align:center;font-size:18px;font-weight:700;margin:8px 0 20px}' +
+      '.sga-ad-card hr{border:0;border-top:1px solid #5d8dbd;margin:22px 0}.sga-ad-rate{border:2px solid #000;background:#39ff14;color:#071a09;padding:15px;font-size:clamp(21px,3vw,25px);font-weight:800;text-align:center;border-radius:10px;margin:14px 0}' +
+      '.sga-ad-cta{display:block;text-align:center;background:#168bff;color:#fff!important;padding:13px 18px;border-radius:12px;font-size:19px;margin:18px auto;max-width:520px}.sga-ad-secondary{text-align:center;font-size:17px;margin:12px 0}' +
       'a{color:#145fa8;text-decoration:none}a:hover{text-decoration:underline}' +
       '</style>';
     return styles +
       '<div class="sga-intro"><p>' + escapeHtml(normalizeReportText(intro)) + '</p></div>' +
       '<div class="sga-table-wrap"><table class="sga-table"><thead><tr><th>No.</th><th>Game</th><th>Posts</th><th>Authors</th><th>Dedicated Tags</th><th>Developer</th></tr></thead><tbody>' + tableRows + '</tbody></table></div>' +
+      '<section class="sga-ad-card" aria-label="Steem Flags advertisement">' +
+        '<div class="sga-ad-image"><a href="https://steemflags.do2earn.dev" target="_blank" rel="noopener noreferrer"><img src="https://cdn.steemitimages.com/DQmZyJR1a1HcrkLBgCRXnuPJuyRfAxHBRyaSm7ZYR7XomWa/steemflags_intro.png" alt="Steem Flags game cover"></a></div>' +
+        '<div class="sga-ad-heading">🏳️ Steem Flags</div>' +
+        '<div class="sga-ad-tagline">✅ Guess the Flags &amp; Earn $STEEM</div>' +
+        '<p><strong>🔵 <a href="https://steemflags.do2earn.dev" target="_blank" rel="noopener noreferrer">Steem Flags</a> is a free Web 3.0 quiz and educational game built on the Steem blockchain and developed by <a href="https://do2earn.dev" target="_blank" rel="noopener noreferrer">Do2Earn</a>.</strong></p>' +
+        '<p><strong>🔵 Test your knowledge of the world\'s flags, challenge yourself, and share your gameplay experience with the Steem community!</strong></p>' +
+        '<hr><h3>💰 Earn $STEEM Now!!</h3>' +
+        '<div class="sga-ad-rate">1000 D2E = 1 $STEEM</div>' +
+        '<p>1️⃣ <strong>Play Steem Flags &amp; Earn D2E.</strong></p>' +
+        '<blockquote>ℹ️ <em>D2E (Do2Earn) is a non-blockchain in-game token in Steem Flags earned through in-game activities such as the quiz game.</em></blockquote>' +
+        '<p>2️⃣ <strong>🛒 Buy more ⚡Energy, Play more &amp; Earn more D2E.</strong></p>' +
+        '<blockquote>ℹ️ <em>Players need ⚡Energy to play Steem Flags. Free ⚡Energy recharges daily. Players can play more Steem Flags by purchasing additional energy.</em></blockquote>' +
+        '<p>3️⃣ <strong>Reach 10,000 D2E in Steem Flags.</strong></p>' +
+        '<p>4️⃣ <strong>⇄ Swap 10,000 D2E to 10 $STEEM in Your Internal Wallet.</strong></p>' +
+        '<p>5️⃣ <strong>↗ Withdraw 10 $STEEM to Your External Wallet.</strong></p>' +
+        '<hr><a class="sga-ad-cta" href="https://steemflags.do2earn.dev" target="_blank" rel="noopener noreferrer">👉 Play Steem Flags Now!</a>' +
+        '<hr><div class="sga-ad-secondary">💰 <strong><a href="https://steemflags.do2earn.dev/earnmoresteem.html" target="_blank" rel="noopener noreferrer">Earn more $STEEM by Steem Flags</a></strong></div>' +
+      '</section>' +
       '<h2>Activity Analysis</h2>' +
       '<div class="sga-analysis"><p>' + escapeHtml(normalizeReportText(analysisOne)) + '</p><p>' + escapeHtml(normalizeReportText(analysisTwo + coverageNote + limitNote + analysisCaveat)) + '</p></div>';
   }
