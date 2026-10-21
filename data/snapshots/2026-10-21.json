@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-21T06:56:31Z",
+  "generated_at": "2026-10-21T09:24:22Z",
   "window": {
-    "start": "2026-10-14T06:56:31Z",
-    "end": "2026-10-21T06:56:31Z",
+    "start": "2026-10-14T09:24:22Z",
+    "end": "2026-10-21T09:24:22Z",
     "days": 7
   },
   "api_endpoint": "https://api.steemit.com",
@@ -46,7 +46,7 @@
       "status": "ok"
     },
     "hari-raid": {
-      "post_count": 30,
+      "post_count": 28,
       "unique_authors": 8,
       "pages_fetched": 1,
       "reached_window_start": true,
@@ -86,8 +86,8 @@
       "status": "ok"
     },
     "steem4snake": {
-      "post_count": 8,
-      "unique_authors": 4,
+      "post_count": 9,
+      "unique_authors": 5,
       "pages_fetched": 1,
       "reached_window_start": true,
       "page_limit_reached": false,
@@ -118,8 +118,8 @@
       "status": "ok"
     },
     "steemgame": {
-      "post_count": 118,
-      "unique_authors": 38,
+      "post_count": 117,
+      "unique_authors": 39,
       "pages_fetched": 2,
       "reached_window_start": true,
       "page_limit_reached": false,
@@ -134,15 +134,15 @@
       "status": "ok"
     },
     "steemhop": {
-      "post_count": 64,
-      "unique_authors": 26,
+      "post_count": 65,
+      "unique_authors": 27,
       "pages_fetched": 1,
       "reached_window_start": true,
       "page_limit_reached": false,
       "status": "ok"
     },
     "steemludo": {
-      "post_count": 90,
+      "post_count": 89,
       "unique_authors": 32,
       "pages_fetched": 1,
       "reached_window_start": true,
@@ -166,7 +166,7 @@
         "steemludo"
       ],
       "game_url": "https://steemx.org/ludo/game",
-      "posts_found": 90,
+      "posts_found": 89,
       "unique_authors": 32,
       "authors": [
         "afzalqamar",
@@ -203,6 +203,36 @@
         "whahedazaman"
       ],
       "posts": [
+        {
+          "author": "do2earn",
+          "permlink": "steem-games-activity-report-october-2026-week-2-m2vwlc",
+          "title": "Steem Games Activity Report | October 2026 - Week 2",
+          "created": "2026-10-21T08:27:24Z",
+          "url": "https://steemit.com/@do2earn/steem-games-activity-report-october-2026-week-2-m2vwlc",
+          "matched_tag": "cur8",
+          "tags": [
+            "steemludo",
+            "cur8",
+            "steemhop",
+            "steem4snake",
+            "hari-raid",
+            "steemheights",
+            "memorygame",
+            "pixelcraft",
+            "steem8ball",
+            "steemflags"
+          ],
+          "net_votes": 0,
+          "children": 1,
+          "pending_payout_value": "0.050 SBD",
+          "active_votes_count": 10,
+          "matched_tags": [
+            "cur8",
+            "steem4snake",
+            "steemhop",
+            "steemludo"
+          ]
+        },
         {
           "author": "shahid.ikram",
           "permlink": "when-steemludo-becomes-a-one-sided-battle--idi29o",
@@ -321,8 +351,8 @@
           ],
           "net_votes": 0,
           "children": 0,
-          "pending_payout_value": "0.449 SBD",
-          "active_votes_count": 4,
+          "pending_payout_value": "0.456 SBD",
+          "active_votes_count": 5,
           "matched_tags": [
             "steemgame",
             "steemhop",
@@ -522,8 +552,8 @@
           ],
           "net_votes": 0,
           "children": 2,
-          "pending_payout_value": "1.314 SBD",
-          "active_votes_count": 31,
+          "pending_payout_value": "1.334 SBD",
+          "active_votes_count": 32,
           "matched_tags": [
             "steemgame",
             "steemludo"
@@ -2381,56 +2411,6 @@
             "steemgame",
             "steemludo"
           ]
-        },
-        {
-          "author": "janufaislam26",
-          "permlink": "steem-ludo-game-14-october-2026",
-          "title": "Steem Ludo Game 14 October  2026🎲🎲",
-          "created": "2026-10-14T08:01:30Z",
-          "url": "https://steemit.com/@janufaislam26/steem-ludo-game-14-october-2026",
-          "matched_tag": "steemgame",
-          "tags": [
-            "hive-180106",
-            "steemgame",
-            "steemludo",
-            "gameplay",
-            "game",
-            "steemexclusive",
-            "cur8"
-          ],
-          "net_votes": 0,
-          "children": 1,
-          "pending_payout_value": "1.033 SBD",
-          "active_votes_count": 31,
-          "matched_tags": [
-            "steemgame",
-            "steemludo"
-          ]
-        },
-        {
-          "author": "afzalqamar",
-          "permlink": "play-steemhop-game-and-reached-rank-19-gmjn2q",
-          "title": "Play Steemhop game and reached rank 19",
-          "created": "2026-10-14T07:25:09Z",
-          "url": "https://steemit.com/@afzalqamar/play-steemhop-game-and-reached-rank-19-gmjn2q",
-          "matched_tag": "steemgame",
-          "tags": [
-            "steemhop",
-            "steemludo",
-            "steemgame",
-            "steemexclusive",
-            "steemfun",
-            "pakistan"
-          ],
-          "net_votes": 0,
-          "children": 3,
-          "pending_payout_value": "3.224 SBD",
-          "active_votes_count": 53,
-          "matched_tags": [
-            "steemgame",
-            "steemhop",
-            "steemludo"
-          ]
         }
       ],
       "query_status": "ok"
@@ -2468,14 +2448,15 @@
         "steemhop"
       ],
       "game_url": "https://steemhop.org/",
-      "posts_found": 64,
-      "unique_authors": 26,
+      "posts_found": 65,
+      "unique_authors": 27,
       "authors": [
         "a-abrar",
         "afzalqamar",
         "blockseater",
         "do2earn",
         "donsultan",
+        "emranhasan",
         "entity01",
         "fahimaislam",
         "fizz0",
@@ -2499,6 +2480,60 @@
         "tradelover"
       ],
       "posts": [
+        {
+          "author": "do2earn",
+          "permlink": "steem-games-activity-report-october-2026-week-2-m2vwlc",
+          "title": "Steem Games Activity Report | October 2026 - Week 2",
+          "created": "2026-10-21T08:27:24Z",
+          "url": "https://steemit.com/@do2earn/steem-games-activity-report-october-2026-week-2-m2vwlc",
+          "matched_tag": "cur8",
+          "tags": [
+            "steemludo",
+            "cur8",
+            "steemhop",
+            "steem4snake",
+            "hari-raid",
+            "steemheights",
+            "memorygame",
+            "pixelcraft",
+            "steem8ball",
+            "steemflags"
+          ],
+          "net_votes": 0,
+          "children": 1,
+          "pending_payout_value": "0.050 SBD",
+          "active_votes_count": 10,
+          "matched_tags": [
+            "cur8",
+            "steem4snake",
+            "steemhop",
+            "steemludo"
+          ]
+        },
+        {
+          "author": "emranhasan",
+          "permlink": "a-relaxing-holiday-with-the-steem-hop-game-gf0qzt",
+          "title": "A Relaxing Holiday with the Steem Hop Game.",
+          "created": "2026-10-21T08:00:57Z",
+          "url": "https://steemit.com/@emranhasan/a-relaxing-holiday-with-the-steem-hop-game-gf0qzt",
+          "matched_tag": "steemgame",
+          "tags": [
+            "steemgame",
+            "steemhop",
+            "steemexclusive",
+            "bangladesh",
+            "steem",
+            "krsuccess"
+          ],
+          "net_votes": 0,
+          "children": 0,
+          "pending_payout_value": "0.079 SBD",
+          "active_votes_count": 12,
+          "matched_tags": [
+            "steemgame",
+            "steemhop"
+          ]
+        },
         {
           "author": "shahid.ikram",
           "permlink": "when-steemludo-becomes-a-one-sided-battle--idi29o",
@@ -2544,8 +2579,8 @@
           ],
           "net_votes": 0,
           "children": 0,
-          "pending_payout_value": "0.449 SBD",
-          "active_votes_count": 4,
+          "pending_payout_value": "0.456 SBD",
+          "active_votes_count": 5,
           "matched_tags": [
             "steemgame",
             "steemhop",
@@ -2641,8 +2676,8 @@
           ],
           "net_votes": 0,
           "children": 1,
-          "pending_payout_value": "5.810 SBD",
-          "active_votes_count": 22,
+          "pending_payout_value": "5.864 SBD",
+          "active_votes_count": 23,
           "matched_tags": [
             "steemhop"
           ]
@@ -4028,31 +4063,6 @@
             "steemgame",
             "steemhop"
           ]
-        },
-        {
-          "author": "afzalqamar",
-          "permlink": "play-steemhop-game-and-reached-rank-19-gmjn2q",
-          "title": "Play Steemhop game and reached rank 19",
-          "created": "2026-10-14T07:25:09Z",
-          "url": "https://steemit.com/@afzalqamar/play-steemhop-game-and-reached-rank-19-gmjn2q",
-          "matched_tag": "steemgame",
-          "tags": [
-            "steemhop",
-            "steemludo",
-            "steemgame",
-            "steemexclusive",
-            "steemfun",
-            "pakistan"
-          ],
-          "net_votes": 0,
-          "children": 3,
-          "pending_payout_value": "3.224 SBD",
-          "active_votes_count": 53,
-          "matched_tags": [
-            "steemgame",
-            "steemhop",
-            "steemludo"
-          ]
         }
       ],
       "query_status": "ok"
@@ -4064,7 +4074,7 @@
         "hari-raid"
       ],
       "game_url": "https://hari-raid.h4lab.com/",
-      "posts_found": 30,
+      "posts_found": 28,
       "unique_authors": 8,
       "authors": [
         "ahp93",
@@ -4701,52 +4711,6 @@
           "matched_tags": [
             "hari-raid"
           ]
-        },
-        {
-          "author": "banguri",
-          "permlink": "2026-10-14-hari-raid",
-          "title": "2026년 10월 14일 스팀잇 일상 - HARI RAID 레전더리 카드 겟 -",
-          "created": "2026-10-14T09:10:06Z",
-          "url": "https://steemit.com/@banguri/2026-10-14-hari-raid",
-          "matched_tag": "hari-raid",
-          "tags": [
-            "kr",
-            "krsuccess",
-            "hari-raid",
-            "h4lab"
-          ],
-          "net_votes": 0,
-          "children": 1,
-          "pending_payout_value": "6.544 SBD",
-          "active_votes_count": 43,
-          "matched_tags": [
-            "hari-raid"
-          ]
-        },
-        {
-          "author": "peterpa",
-          "permlink": "raid-95-5",
-          "title": "[하리레이드] [RAID-95] 레전더리 획득!! (5)",
-          "created": "2026-10-14T07:48:42Z",
-          "url": "https://steemit.com/@peterpa/raid-95-5",
-          "matched_tag": "hari-raid",
-          "tags": [
-            "hive-134173",
-            "h4lab",
-            "hari-raid",
-            "hariraid",
-            "krsuccess",
-            "kr",
-            "zzan",
-            "game"
-          ],
-          "net_votes": 0,
-          "children": 3,
-          "pending_payout_value": "0.060 SBD",
-          "active_votes_count": 11,
-          "matched_tags": [
-            "hari-raid"
-          ]
         }
       ],
       "query_status": "ok"
@@ -4790,6 +4754,56 @@
         "wildnature1"
       ],
       "posts": [
+        {
+          "author": "do2earn",
+          "permlink": "steem-games-activity-report-october-2026-week-2-m2vwlc",
+          "title": "Steem Games Activity Report | October 2026 - Week 2",
+          "created": "2026-10-21T08:27:24Z",
+          "url": "https://steemit.com/@do2earn/steem-games-activity-report-october-2026-week-2-m2vwlc",
+          "matched_tag": "cur8",
+          "tags": [
+            "steemludo",
+            "cur8",
+            "steemhop",
+            "steem4snake",
+            "hari-raid",
+            "steemheights",
+            "memorygame",
+            "pixelcraft",
+            "steem8ball",
+            "steemflags"
+          ],
+          "net_votes": 0,
+          "children": 1,
+          "pending_payout_value": "0.050 SBD",
+          "active_votes_count": 10,
+          "matched_tags": [
+            "cur8",
+            "steem4snake",
+            "steemhop",
+            "steemludo"
+          ]
+        },
+        {
+          "author": "micro.cur8",
+          "permlink": "pings-20261021",
+          "title": "Cur8 Pings · Oct 21, 2026",
+          "created": "2026-10-21T08:00:36Z",
+          "url": "https://steemit.com/@micro.cur8/pings-20261021",
+          "matched_tag": "cur8",
+          "tags": [
+            "hive-159863",
+            "cur8",
+            "pings"
+          ],
+          "net_votes": 0,
+          "children": 0,
+          "pending_payout_value": "0.000 SBD",
+          "active_votes_count": 0,
+          "matched_tags": [
+            "cur8"
+          ]
+        },
         {
           "author": "a-abrar",
           "permlink": "cur8-juego-b95wvl",
@@ -6412,47 +6426,6 @@
             "cur8",
             "steemgame"
           ]
-        },
-        {
-          "author": "micro.cur8",
-          "permlink": "pings-20261014",
-          "title": "Cur8 Pings · Oct 14, 2026",
-          "created": "2026-10-14T08:00:36Z",
-          "url": "https://steemit.com/@micro.cur8/pings-20261014",
-          "matched_tag": "cur8",
-          "tags": [
-            "hive-159863",
-            "cur8",
-            "pings"
-          ],
-          "net_votes": 0,
-          "children": 9,
-          "pending_payout_value": "0.000 SBD",
-          "active_votes_count": 0,
-          "matched_tags": [
-            "cur8"
-          ]
-        },
-        {
-          "author": "pattyy",
-          "permlink": "jugu-al-juego-altitude-2lk2u1",
-          "title": "Jugué al juego «Altitude».",
-          "created": "2026-10-14T07:05:27Z",
-          "url": "https://steemit.com/@pattyy/jugu-al-juego-altitude-2lk2u1",
-          "matched_tag": "cur8",
-          "tags": [
-            "game",
-            "cur8",
-            "altitude",
-            "steemexclusive"
-          ],
-          "net_votes": 0,
-          "children": 1,
-          "pending_payout_value": "1.087 SBD",
-          "active_votes_count": 7,
-          "matched_tags": [
-            "cur8"
-          ]
         }
       ],
       "query_status": "ok"
@@ -6489,8 +6462,8 @@
           ],
           "net_votes": 0,
           "children": 1,
-          "pending_payout_value": "0.301 SBD",
-          "active_votes_count": 10,
+          "pending_payout_value": "0.302 SBD",
+          "active_votes_count": 11,
           "matched_tags": [
             "memorygame"
           ]
@@ -6711,15 +6684,46 @@
         "steem4snake"
       ],
       "game_url": "https://steemone.com/games/",
-      "posts_found": 8,
-      "unique_authors": 4,
+      "posts_found": 9,
+      "unique_authors": 5,
       "authors": [
         "bijoy1",
         "dannyben39",
+        "do2earn",
         "rifat58",
         "whahedazaman"
       ],
       "posts": [
+        {
+          "author": "do2earn",
+          "permlink": "steem-games-activity-report-october-2026-week-2-m2vwlc",
+          "title": "Steem Games Activity Report | October 2026 - Week 2",
+          "created": "2026-10-21T08:27:24Z",
+          "url": "https://steemit.com/@do2earn/steem-games-activity-report-october-2026-week-2-m2vwlc",
+          "matched_tag": "cur8",
+          "tags": [
+            "steemludo",
+            "cur8",
+            "steemhop",
+            "steem4snake",
+            "hari-raid",
+            "steemheights",
+            "memorygame",
+            "pixelcraft",
+            "steem8ball",
+            "steemflags"
+          ],
+          "net_votes": 0,
+          "children": 1,
+          "pending_payout_value": "0.050 SBD",
+          "active_votes_count": 10,
+          "matched_tags": [
+            "cur8",
+            "steem4snake",
+            "steemhop",
+            "steemludo"
+          ]
+        },
         {
           "author": "rifat58",
           "permlink": "4zgfie-steem4snake-or-season-02-legends-never-die-powered-by-friends-witness",
