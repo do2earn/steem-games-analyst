@@ -311,11 +311,20 @@
       activeGames.length + (activeGames.length === 1 ? " game had" : " games had") + " at least one post under its listed tags. " +
       "The table compares post counts, authors, tags used to find each game's content, and developer profiles where available. " +
       "Rewards, where offered, depend on each game's rules and are not guaranteed.";
+    const introductionParagraphs = [
+      "Hello, Steem Games Enthusiasts and Developers!",
+      "Games built on the Steem blockchain are entertaining projects that have successfully attracted a significant portion of the user base across Steem platforms. Some players compete on these games' leaderboards, earning small amounts of $STEEM. Others go a step further: by playing these games and creating content about their gameplay on Steem platforms, they aim to earn greater rewards through upvotes from the dedicated curation team for Steem games.",
+      "Unfortunately, despite these efforts, these play-to-earn blockchain games remain largely unknown to the broader online community, and their player counts remain relatively low compared to games on other blockchain networks.",
+      "Regrettably, unlike in previous months, no specialized curation team for Steem games has been appointed by the Steemit core team for October 2026. My own inquiries, made in my capacity as a developer of one of these games, have yielded no positive results.",
+      "Furthermore, the absence of a unified, dedicated platform for Steem games has left many Steem users completely unaware of their existence. Consequently, I have decided to create and publish a weekly statistical and analytical report focused on Steem games."
+    ];
     const styles = '<style>' +
       'body{font-family:Arial,Helvetica,sans-serif;color:#17263b;line-height:1.65;font-size:15px}' +
       'h1{font-size:25px;line-height:1.25;color:#102b4e;margin:0 0 16px}' +
       'h2{font-size:19px;color:#173d63;margin:25px 0 10px}' +
       '.sga-intro{padding:15px 17px;background:#f1f7ff;border:1px solid #d7e7fa;border-radius:14px}' +
+      '.sga-intro-card,.sga-stat-card,.sga-activity-card{margin:14px 0;padding:15px 17px;border:1px solid #d7e7fa;border-radius:14px;background:#f1f7ff;color:#17263b}' +
+      '.sga-intro-card p{margin:0 0 12px}.sga-intro-card p:last-child{margin-bottom:0}.sga-stat-card h1{font-size:25px;line-height:1.25;color:#102b4e;margin:0 0 14px}.sga-stat-card .sga-intro{margin:0 0 14px}.sga-activity-card h2{margin:0 0 10px}' +
       '.sga-table-wrap{margin:16px 0;overflow-x:auto;border:1px solid #d5e1ef;border-radius:14px}' +
       'table.sga-table{border-collapse:separate;border-spacing:0;width:100%;min-width:650px;font-size:14px;background:#fff}' +
       '.sga-table th{background:#173d63;color:#fff;padding:12px 10px;text-align:left;font-weight:700}' +
@@ -335,8 +344,10 @@
       'a{color:#145fa8;text-decoration:none}a:hover{text-decoration:underline}' +
       '</style>';
     return styles +
+      '<div class="sga-intro-card">' + introductionParagraphs.map(paragraph => '<p>' + escapeHtml(paragraph) + '</p>').join("") + '</div>' +
+      '<div class="sga-stat-card"><h1>Steem Games Statistical Table</h1>' +
       '<div class="sga-intro"><p>' + escapeHtml(normalizeReportText(intro)) + '</p></div>' +
-      '<div class="sga-table-wrap"><table class="sga-table"><thead><tr><th>No.</th><th>Game</th><th>Posts</th><th>Authors</th><th>Dedicated Tags</th><th>Developer</th></tr></thead><tbody>' + tableRows + '</tbody></table></div>' +
+      '<div class="sga-table-wrap"><table class="sga-table"><thead><tr><th>No.</th><th>Game</th><th>Posts</th><th>Authors</th><th>Dedicated Tags</th><th>Developer</th></tr></thead><tbody>' + tableRows + '</tbody></table></div></div>' +
       '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="width:100%;max-width:100%;border:2px solid #168bff;border-radius:12px;background-color:#071a36;border-collapse:separate;border-spacing:0;margin:14px 0;color:#f4f8ff;"><tr><td style="padding:12px;background-color:#071a36;color:#f4f8ff;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.5;overflow-wrap:anywhere;">' +
         '<p style="text-align:center;margin:0 0 8px;"><a href="https://steemflags.do2earn.dev" target="_blank" rel="noopener noreferrer"><img src="https://cdn.steemitimages.com/DQmZyJR1a1HcrkLBgCRXnuPJuyRfAxHBRyaSm7ZYR7XomWa/steemflags_intro.png" alt="Steem Flags flag quiz game preview" width="680" style="display:block;width:100%;max-width:680px;height:auto;margin:0 auto;border:1px solid #4b9cff;border-radius:7px;"></a></p>' +
         '<h2 style="color:#ffffff;text-align:center;font-size:23px;line-height:1.25;margin:6px 0;">🏳️ Steem Flags</h2>' +
@@ -359,8 +370,8 @@
         '<hr style="border:0;border-top:1px solid #5d8dbd;margin:10px 0;">' +
         '<p style="text-align:center;font-size:14px;margin:7px 0;">📘 <strong><a href="https://steemflags.do2earn.dev/earnmoresteem.html" target="_blank" rel="noopener noreferrer" style="color:#8bd4ff;font-weight:bold;">Learn how to earn more STEEM</a></strong></p>' +
         '</td></tr></table>' +
-      '<h2>Activity Analysis</h2>' +
-      '<div class="sga-analysis"><p>' + escapeHtml(normalizeReportText(analysisOne)) + '</p><p>' + escapeHtml(normalizeReportText(analysisTwo + coverageNote + limitNote + analysisCaveat)) + '</p></div>';
+      '<div class="sga-activity-card"><h2>Activity Analysis</h2>' +
+      '<div class="sga-analysis"><p>' + escapeHtml(normalizeReportText(analysisOne)) + '</p><p>' + escapeHtml(normalizeReportText(analysisTwo + coverageNote + limitNote + analysisCaveat)) + '</p></div></div>';
   }
 
   function showPreview() {
